@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hadi Architect & Builder</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .slide { display: none; }
+        .slide.active { display: block; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-compass-drafting text-amber-600 text-3xl"></i>
+                <div>
+                    <span class="text-xl font-bold tracking-tight text-gray-900 block leading-tight">HADI</span>
+                    <span class="text-xs tracking-widest text-amber-600 uppercase font-semibold block">Architect & Builder</span>
+                </div>
+            </div>
+            <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+                <a href="#home" class="hover:text-amber-600 transition">Home</a>
+                <a href="#about" class="hover:text-amber-600 transition">About</a>
+                <a href="#services" class="hover:text-amber-600 transition">Services</a>
+                <a href="#projects" class="hover:text-amber-600 transition">Projects</a>
+                <a href="#why-choose-us" class="hover:text-amber-600 transition">Why Us</a>
+                <a href="#process" class="hover:text-amber-600 transition">Process</a>
+                <a href="#team" class="hover:text-amber-600 transition">Our Team</a>
+                <a href="#contact" class="bg-amber-600 text-white px-4 py-2 rounded shadow hover:bg-amber-700 transition">Get Quote</a>
+            </nav>
+            <button onclick="toggleMobileMenu()" class="md:hidden text-gray-700 text-2xl focus:outline-none">
+                <i class="fa-solid fa-bars" id="menu-icon"></i>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-4 py-4 space-y-3 shadow-inner">
+            <a href="#home" onclick="toggleMobileMenu()" class="block text-gray-700 hover:text-amber-600 font-medium">Home</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="block text-gray-700 hover:text-amber-600 font-medium">About</a>
+            <a href="#services" onclick="toggleMobileMenu()" class="block text-gray-700 hover:text-amber-600 font-medium">Services</a>
+            <a href="#projects" onclick="toggleMobileMenu()" class="block text-gray-700 hover:text-amber-600 font-medium">Projects</a>
+            <a href="#why-choose-us" onclick="toggleMobileMenu()" class="block text-gray-700 hover:text-amber-600 font-medium">Why Us</a>
+            <a href="#process" onclick="toggleMobileMenu()" class="block text-gray-700 hover:text-amber-600 font-medium">Process</a>
+            <a href="#team" onclick="toggleMobileMenu()" class="block text-gray-700 hover:text-amber-600 font-medium">Our Team</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block text-center bg-amber-600 text-white px-4 py-2 rounded">Get Quote</a>
+        </div>
+    </header>
+
+    <section id="home" class="relative bg-gray-900 text-white overflow-hidden min-h-[85vh] flex items-center">
+        <div class="absolute inset-0 z-0">
+            <div class="slide active absolute inset-0 bg-cover bg-center transition-all duration-1000" style="background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('s1.png');"></div>
+            <div class="slide absolute inset-0 bg-cover bg-center transition-all duration-1000" style="background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('s2.png');"></div>
+            <div class="slide absolute inset-0 bg-cover bg-center transition-all duration-1000" style="background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('s3.png');"></div>
+            <div class="slide absolute inset-0 bg-cover bg-center transition-all duration-1000" style="background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('s4.png');"></div>
+            <div class="slide absolute inset-0 bg-cover bg-center transition-all duration-1000" style="background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('s5.png');"></div>
+            <div class="slide absolute inset-0 bg-cover bg-center transition-all duration-1000" style="background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('s6.png');"></div>
+            <div class="slide absolute inset-0 bg-cover bg-center transition-all duration-1000" style="background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('s7.png');"></div>
+            <div class="slide absolute inset-0 bg-cover bg-center transition-all duration-1000" style="background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('s8.png');"></div>
+            <div class="slide absolute inset-0 bg-cover bg-center transition-all duration-1000" style="background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('s9.png');"></div>
+            <div class="slide absolute inset-0 bg-cover bg-center transition-all duration-1000" style="background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('s10.png');"></div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="text-amber-500 font-semibold tracking-widest uppercase text-xs sm:text-sm block mb-3">Welcome to Hadi Architect & Builder</span>
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
+                Transforming Visions Into <span class="text-amber-500">Exceptional Spaces</span>
+            </h1>
+            <p class="text-base sm:text-lg text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed">
+                We are a trusted name in architecture, construction, interior design, and landscape development. Led by Founder & CEO Rana Umair Ashraf, we are committed to transforming ideas into exceptional spaces through innovative design, quality craftsmanship, and professional expertise.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#contact" class="bg-amber-600 hover:bg-amber-700 text-white font-semibold px-8 py-3.5 rounded shadow-lg transition">
+                    Get Quote <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+                </a>
+                <a href="#projects" class="border border-white/40 hover:border-white text-white bg-white/5 hover:bg-white/10 font-semibold px-8 py-3.5 rounded transition">
+                    View Portfolio
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">About Our Company</h2>
+                <div class="w-16 h-1 bg-amber-600 mx-auto mt-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+                <div class="bg-gray-50 p-8 rounded-xl border border-gray-100 shadow-sm">
+                    <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center text-amber-600 text-xl font-bold mb-6">
+                        <i class="fa-solid fa-building"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Company Profile</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Hadi Architect & Builder is a professional architectural, construction, and landscape design company dedicated to delivering innovative and high-quality solutions. Under the leadership of Founder & CEO, Rana Umair Ashraf, we transform ideas into functional, sustainable, and visually appealing spaces.
+                    </p>
+                </div>
+
+                <div class="bg-gray-50 p-8 rounded-xl border border-gray-100 shadow-sm">
+                    <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center text-amber-600 text-xl font-bold mb-6">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Mission & Vision</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Our mission is to provide exceptional design and construction services that exceed client expectations. Our vision is to become a trusted leader in architecture and construction through innovation, quality, and excellence.
+                    </p>
+                </div>
+
+                <div class="bg-gray-50 p-8 rounded-xl border border-gray-100 shadow-sm">
+                    <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center text-amber-600 text-xl font-bold mb-6">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Experience & Expertise</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        With extensive experience in architectural design, construction, interior design, and landscape development, our team delivers projects with precision and professionalism. We combine technical expertise with creative thinking to achieve outstanding results.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-gray-900 rounded-2xl overflow-hidden shadow-xl max-w-4xl mx-auto text-white">
+                <div class="grid grid-cols-1 md:grid-cols-2 items-center">
+                    <div class="h-80 md:h-full bg-gray-800">
+                        <img src="ranaumair.jpeg" alt="Rana Umar Ashraf" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-8 sm:p-12">
+                        <span class="text-amber-500 font-semibold text-xs tracking-widest uppercase block mb-2">Executive Leadership</span>
+                        <h3 class="text-2xl sm:text-3xl font-bold mb-1">Rana Umair Ashraf</h3>
+                        <p class="text-gray-400 font-medium mb-6">Founder & CEO</p>
+                        <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                            Guiding Hadi Architect & Builder with a distinct focus on architectural precision, functional excellence, and modern building benchmarks tailored carefully to local Pakistani client spaces.
+                        </p>
+                        <div class="w-12 h-0.5 bg-amber-500"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">Our Specialized Services</h2>
+                <div class="w-16 h-1 bg-amber-600 mx-auto mt-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                    <div class="text-amber-600 text-3xl mb-5"><i class="fa-solid fa-pen-ruler"></i></div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Architectural Design</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">We create innovative and functional architectural designs tailored to your needs. Our focus is on aesthetics, efficiency, and sustainability.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                    <div class="text-amber-600 text-3xl mb-5"><i class="fa-solid fa-trowel-bricks"></i></div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Building Construction</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">We deliver high-quality construction services with attention to detail and durability. Every project is completed with professional workmanship and care.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                    <div class="text-amber-600 text-3xl mb-5"><i class="fa-solid fa-couch"></i></div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Interior Design</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">We design stylish and comfortable interior spaces that reflect your personality and lifestyle. Our solutions combine beauty with functionality.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                    <div class="text-amber-600 text-3xl mb-5"><i class="fa-solid fa-cubes"></i></div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">3D Visualization & Rendering</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">We provide realistic 3D models and renderings to help clients visualize their projects before construction begins. This ensures better planning and decision-making.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                    <div class="text-amber-600 text-3xl mb-5"><i class="fa-solid fa-tree"></i></div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Landscape Design</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">We create attractive outdoor spaces including gardens, lawns, and recreational areas. Our landscape designs enhance both beauty and usability.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                    <div class="text-amber-600 text-3xl mb-5"><i class="fa-solid fa-list-check"></i></div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Project Planning & Management</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">We oversee every stage of the project from planning to completion. Our management approach ensures quality, efficiency, and timely delivery.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">Our Project Portfolio</h2>
+                <div class="w-16 h-1 bg-amber-600 mx-auto mt-4"></div>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-2 mb-12">
+                <button onclick="filterProjects('all')" class="project-btn px-5 py-2.5 rounded text-sm font-semibold bg-amber-600 text-white shadow transition">All Projects</button>
+                <button onclick="filterProjects('residential')" class="project-btn px-5 py-2.5 rounded text-sm font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200 transition">Residential</button>
+                <button onclick="filterProjects('commercial')" class="project-btn px-5 py-2.5 rounded text-sm font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200 transition">Commercial</button>
+                <button onclick="filterProjects('interior')" class="project-btn px-5 py-2.5 rounded text-sm font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200 transition">Interior Design</button>
+                <button onclick="filterProjects('landscape')" class="project-btn px-5 py-2.5 rounded text-sm font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200 transition">Landscape</button>
+                <button onclick="filterProjects('before-after')" class="project-btn px-5 py-2.5 rounded text-sm font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200 transition">Before & After</button>
+                <button onclick="filterProjects('construction')" class="project-btn px-5 py-2.5 rounded text-sm font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200 transition">Construction</button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-300" id="project-grid">
+                
+                <div class="project-card bg-gray-50 border border-gray-100 rounded-xl overflow-hidden shadow-sm" data-category="residential">
+                    <div class="h-56 bg-gray-200 relative"><img src="h5699.png" alt="H5699" class="w-full h-full object-cover"></div>
+                    <div class="p-6"><span class="text-xs font-bold text-amber-600 uppercase tracking-wider block mb-1">Residential</span><h3 class="text-lg font-bold text-gray-950 mb-2">H5699 – Modern Family Residence</h3><p class="text-xs text-gray-500 font-medium mb-3">Client: Ahmed Raza • Location: Lahore, Punjab</p><p class="text-gray-600 text-xs leading-relaxed">A modern double-story residence designed for a growing family. Features spacious living areas, natural lighting, and contemporary architecture.</p></div>
+                </div>
+                <div class="project-card bg-gray-50 border border-gray-100 rounded-xl overflow-hidden shadow-sm" data-category="residential">
+                    <div class="h-56 bg-gray-200 relative"><img src="h5700.png" alt="H5700" class="w-full h-full object-cover"></div>
+                    <div class="p-6"><span class="text-xs font-bold text-amber-600 uppercase tracking-wider block mb-1">Residential</span><h3 class="text-lg font-bold text-gray-950 mb-2">H5700 – Green Valley House</h3><p class="text-xs text-gray-500 font-medium mb-3">Client: Muhammad Bilal • Location: Islamabad</p><p class="text-gray-600 text-xs leading-relaxed">A luxury residential home with energy-efficient planning and premium finishes. Designed to maximize comfort and functionality.</p></div>
+                </div>
+                <div class="project-card bg-gray-50 border border-gray-100 rounded-xl overflow-hidden shadow-sm" data-category="residential">
+                    <div class="h-56 bg-gray-200 relative"><img src="h5701.png" alt="H5701" class="w-full h-full object-cover"></div>
+                    <div class="p-6"><span class="text-xs font-bold text-amber-600 uppercase tracking-wider block mb-1">Residential</span><h3 class="text-lg font-bold text-gray-950 mb-2">H5701 – Al Noor Villa</h3><p class="text-xs text-gray-500 font-medium mb-3">Client: Usman Tariq • Location: Faisalabad, Punjab</p><p class="text-gray-600 text-xs leading-relaxed">Elegant villa featuring modern elevations and open interior spaces. Includes landscaped outdoor areas and covered parking.</p></div>
+                </div>
+                <div class="project-card bg-gray-50 border border-gray-100 rounded-xl overflow-hidden shadow-sm" data-category="residential">
+                    <div class="h-56 bg-gray-200 relative"><img src="h5702.png" alt="H5702" class="w-full h-full object-cover"></div>
+                    <div class="p-6"><span class="text-xs font-bold text-amber-600 uppercase tracking-wider block mb-1">Residential</span><h3 class="text-lg font-bold text-gray-950 mb-2">H5702 – Royal Heights Residence</h3><p class="text-xs text-gray-500 font-medium mb-3">Client: Ali Hassan • Location: Multan, Punjab</p><p class="text-gray-600 text-xs leading-relaxed">A custom-designed family home with a blend of traditional and modern architectural elements. Built for durability and style.</p></div>
+                </div>
+                <div class="project-card bg-gray-50 border border-gray-100 rounded-xl overflow-hidden shadow-sm" data-category="residential">
+                    <div class="h-56 bg-gray-200 relative"><img src="h5703.png" alt="H5703" class="w-full h-full object-cover"></div>
+                    <div class="p-6"><span class="text-xs font-bold text-amber-600 uppercase tracking-wider block mb-1">Residential</span><h3 class="text-lg font-bold text-gray-950 mb-2">H5703 – Bahria Dream House</h3><p class="text-xs text-gray-500 font-medium mb-3">Client: Hamza Siddique • Location: Rawalpindi, Punjab</p><p class="text-gray-600 text-xs leading-relaxed">Contemporary residential project focused on luxury living and smart space utilization. Includes modern façade treatments and premium materials.</p></div>
+                </div>
+                <div class="project-card bg-gray-50 border border-gray-100 rounded-xl overflow-hidden shadow-sm" data-category="residential">
+                    <div class="h-56 bg-gray-200 relative"><img src="h5704.png" alt="H5704" class="w-full h-full object-cover"></div>
+                    <div class="p-6"><span class="text-xs font-bold text-amber-600 uppercase tracking-wider block mb-1">Residential</span><h3 class="text-lg font-bold text-gray-950 mb-2">H5704 – Garden View Residence</h3><p class="text-xs text-gray-500 font-medium mb-3">Client: Imran Bashir • Location: Sialkot, Punjab</p><p class="text-gray-600 text-xs leading-relaxed">Designed around green spaces and natural ventilation. The project offers a peaceful environment with modern living standards.</p></div>
+                </div>
+
+                <div class="project-card bg-gray-50 border border-gray-100 rounded-xl overflow-hidden shadow-sm" data-category="commercial">
+                    <div class="h-56 bg-gray-200 relative"><img src="h5705.png" alt="H5705" class="w-full h-full object-cover"></div>
+                    <div class="p-6"><span class="text-xs font-bold text-amber-600 uppercase tracking-wider block mb-1">Commercial</span><h3 class="text-lg font-bold text-gray-950 mb-2">H5705 – Al Rehman Business Center</h3><p class="text-xs text-gray-500 font-medium mb-3">Client: Faisal Mehmood • Location: Gujranwala, Punjab</p><p class="text-gray-600 text-xs leading-relaxed">Multi-story commercial building designed for offices and retail spaces. Features modern glass elevations and efficient circulation.</p></div>
+                </div>
+                <div class="project-card bg-gray-50 border border-gray-100 rounded-xl overflow-hidden shadow-sm" data-category="commercial">
+                    <div class="h-56 bg-gray-200 relative"><img src="h5706.png" alt="H5706" class="w-full h-full object-cover"></div>
+                    <div class="p-6"><span class="text-xs font-bold text-amber-600 uppercase tracking-wider block mb-1">Commercial</span><h3 class="text-lg font-bold text-gray-950 mb-2">H5706 – Pak Trade Plaza</h3><p class="text-xs text-gray-500 font-medium mb-3">Client: Kashif Malik • Location: Karachi, Sindh</p><p class="text-gray-600 text-xs leading-relaxed">Commercial plaza with spacious shops and office units. Designed to support high customer traffic and business growth.</p></div>
+                </div>
+                <div class="project-card bg-gray-50 border border-gray-100 rounded-xl overflow-hidden shadow-sm" data-category="commercial">
+                    <div class="h-56 bg-gray-200 relative"><img src="h5707.png" alt="H5707" class="w-full h-full object-cover"></div>
+                    <div class="p-6"><span class="text-xs font-bold text-amber-600 uppercase tracking-wider block mb-1">Commercial</span><h3 class="text-lg font-bold text-gray-950 mb-2">H5707 – City Square Mall</h3><p class="text-xs text-gray-500 font-medium mb-3">Client: Shahid Iqbal • Location: Peshawar, KPK</p><p class="text-gray-600 text-xs leading-relaxed">Modern shopping complex with attractive architecture and functional layouts. Built to enhance the retail experience.</p></div>
+                </div>
+
+                <div class="project-card bg-gray-50 border border-gray-100 rounded-xl overflow-hidden shadow-sm" data-category="interior">
+                    <div class="h-56 bg-gray-200 relative"><img src="h5720.png" alt="H5720" class="w-full h-full object-cover"></div>
+                    <div class="p-6"><span class="text-xs font-bold text-amber-600 uppercase tracking-wider block mb-1">Interior Design</span><h3 class="text-lg font-bold text-gray-950 mb-2">H5720 – Luxury Master Bedroom</h3><p class="text-xs text-gray-500 font-medium mb-3">Client: Kamran Mughal • Location: Lahore, Punjab</p><p class="text-gray-600 text-xs leading-relaxed">A modern master bedroom design featuring premium wall paneling, customized ambient lighting, and optimized space planning.</p></div>
+                </div>
+                <div class="project-card bg-gray-50 border border-gray-100 rounded-xl overflow-hidden shadow-sm" data-category="interior">
+                    <div class="h-56 bg-gray-200 relative"><img src="h5721.png" alt="H5721" class="w-full h-full object-cover"></div>
+                    <div class="p-6"><span class="text-xs font-bold text-amber-600 uppercase tracking-wider block mb-1">Interior Design</span><h3 class="text-lg font-bold text-gray-950 mb-2">H5721 – Corporate Office Interior</h3><p class="text-xs text-gray-500 font-medium mb-3">Client: Zafar Corporate Group • Location: Islamabad</p><p class="text-gray-600 text-xs leading-relaxed">Professional and sleek workspace environment designed with functional workstations, conference setups, and modern themes.</p></div>
+                </div>
+                <div class="project-card bg-gray-50 border border-gray-100 rounded-xl overflow-hidden shadow-sm" data-category="interior">
+                    <div class="h-56 bg-gray-200 relative"><img src="h5722.png" alt="H5722" class="w-full h-full object-cover"></div>
+                    <div class="p-6"><span class="text-xs font-bold text-amber-600 uppercase tracking-wider block mb-1">Interior Design</span><h3 class="text-lg font-bold text-gray-950 mb-2">H5722 – High-End Modular Kitchen</h3><p class="text-xs text-gray-500 font-medium mb-3">Client: Mrs. Sajid • Location: Faisalabad, Punjab</p><p class="text-gray-600 text-xs leading-relaxed">Smart modular kitchen design focusing on ergonomics, customized storage cabinets, premium countertops, and sleek fittings.</p></div>
+                </div>
+                <div class="project-card bg-gray-50 border border-gray-100 rounded-xl overflow-hidden shadow-sm" data-category="interior">
+                    <div class="h-56 bg-gray-200 relative"><img src="h5723.png" alt="H5723" class="w-full h-full object-cover"></div>
+                    <div class="p-6"><span class="text-xs font-bold text-amber-600 uppercase tracking-wider block mb-1">Interior Design</span><h3 class="text-lg font-bold text-gray-950 mb-2">H5723 – Contemporary TV Lounge</h3><p class="text-xs text-gray-500 font-medium mb-3">Client: Bilal Yousaf • Location: Multan, Punjab</p><p class="text-gray-600 text-xs leading-relaxed">A warm and spacious family TV lounge area showcasing a bespoke media wall design, fall ceiling textures, and comfortable seating layouts.</p></div>
+                </div>
+                <div class="project-card bg-gray-50 border border-gray-100 rounded-xl overflow-hidden shadow-sm" data-category="interior">
+                    <div class="h-56 bg-gray-200 relative"><img src="h5724.png" alt="H5724" class="w-full h-full object-cover"></div>
+                    <div class="p-6"><span class="text-xs font-bold text-amber-600 uppercase tracking-wider block mb-1">Interior Design</span><h3 class="text-lg font-bold text-gray-950 mb-2">H5724 – Brand Boutique Retail Shop</h3><p class="text-xs text-gray-500 font-medium mb-3">Client: Trendz Studio • Location: Lahore, Punjab</p><p class="text-gray-600 text-xs leading-relaxed">An interactive commercial retail store interior designed to enhance product visibility with tailored display racks and thematic lighting.</p></div>
+                </div>
+                <div class="project-card bg-gray-50 border border-gray-100 rounded-xl overflow-hidden shadow-sm" data-category="interior">
+                    <div class="h-56 bg-gray-200 relative"><img src="h5725.png" alt="H5725" class="w-full h-full object-cover"></div>
+                    <div class="p-6"><span class="text-xs font-bold text-amber-600 uppercase tracking-wider block mb-1">Interior Design</span><h3 class="text-lg font-bold text-gray-950 mb-2">H5725 – Kids Deluxe Bedroom</h3><p class="text-xs text-gray-500 font-medium mb-3">Client: Dr. Asim Malik • Location: Rawalpindi, Punjab</p><p class="text-gray-600 text-xs leading-relaxed">Creative and vibrant bedroom layout tailored for children, combining smart studying desks, wall murals, and compact storage options.</p></div>
+                </div>
+
+                <div class="project-card bg-gray-50 border border-gray-100 rounded-xl overflow-hidden shadow-sm" data-category="landscape">
+                    <div class="h-56 bg-gray-200 relative"><img src="h5708.png" alt="H5708" class="w-full h-full object-cover"></div>
+                    <div class="p-6"><span class="text-xs font-bold text-amber-600 uppercase tracking-wider block mb-1">Landscape</span><h3 class="text-lg font-bold text-gray-950 mb-2">H5708 – Gulshan Garden Development</h3><p class="text-xs text-gray-500 font-medium mb-3">Client: Abdul Rehman • Location: Lahore, Punjab</p><p class="text-gray-600 text-xs leading-relaxed">Complete landscape design including lawns, pathways, and decorative plants. Created to provide a relaxing outdoor environment.</p></div>
+                </div>
+                <div class="project-card bg-gray-50 border border-gray-100 rounded-xl overflow-hidden shadow-sm" data-category="landscape">
+                    <div class="h-56 bg-gray-200 relative"><img src="h5709.png" alt="H5709" class="w-full h-full object-cover"></div>
+                    <div class="p-6"><span class="text-xs font-bold text-amber-600 uppercase tracking-wider block mb-1">Landscape</span><h3 class="text-lg font-bold text-gray-950 mb-2">H5709 – Green Park Renovation</h3><p class="text-xs text-gray-500 font-medium mb-3">Client: Saad Ahmed • Location: Islamabad</p><p class="text-gray-600 text-xs leading-relaxed">Public landscape project featuring modern seating areas and green zones. Designed to improve community engagement and aesthetics.</p></div>
+                </div>
+                <div class="project-card bg-gray-50 border border-gray-100 rounded-xl overflow-hidden shadow-sm" data-category="landscape">
+                    <div class="h-56 bg-gray-200 relative"><img src="h5710.png" alt="H5710" class="w-full h-full object-cover"></div>
+                    <div class="p-6"><span class="text-xs font-bold text-amber-600 uppercase tracking-wider block mb-1">Landscape</span><h3 class="text-lg font-bold text-gray-950 mb-2">H5710 – Royal Lawn Design</h3><p class="text-xs text-gray-500 font-medium mb-3">Client: Zain Ali • Location: Bahawalpur, Punjab</p><p class="text-gray-600 text-xs leading-relaxed">Premium landscape project with water features and customized planting schemes. Focused on beauty, sustainability, and comfort.</p></div>
+                </div>
+
+                <div class="project-card bg-gray-50 border border-gray-100 rounded-xl overflow-hidden shadow-sm" data-category="before-after">
+                    <div class="h-56 bg-gray-200 relative"><img src="h5711.png" alt="H5711" class="w-full h-full object-cover"></div>
+                    <div class="p-6"><span class="text-xs font-bold text-amber-600 uppercase tracking-wider block mb-1">Before & After</span><h3 class="text-lg font-bold text-gray-950 mb-2">H5711 – House Renovation Transformation</h3><p class="text-xs text-gray-500 font-medium mb-3">Client: Ahsan Rauf • Location: Lahore, Punjab</p><p class="text-gray-600 text-xs leading-relaxed">An outdated residence transformed into a modern family home. The renovation improved both aesthetics and functionality.</p></div>
+                </div>
+                <div class="project-card bg-gray-50 border border-gray-100 rounded-xl overflow-hidden shadow-sm" data-category="before-after">
+                    <div class="h-56 bg-gray-200 relative"><img src="h5712.png" alt="H5712" class="w-full h-full object-cover"></div>
+                    <div class="p-6"><span class="text-xs font-bold text-amber-600 uppercase tracking-wider block mb-1">Before & After</span><h3 class="text-lg font-bold text-gray-950 mb-2">H5712 – Commercial Façade Upgrade</h3><p class="text-xs text-gray-500 font-medium mb-3">Client: Noman Akhtar • Location: Faisalabad, Punjab</p><p class="text-gray-600 text-xs leading-relaxed">Complete exterior renovation of a commercial property. The new façade significantly enhanced the building’s visual appeal.</p></div>
+                </div>
+                <div class="project-card bg-gray-50 border border-gray-100 rounded-xl overflow-hidden shadow-sm" data-category="before-after">
+                    <div class="h-56 bg-gray-200 relative"><img src="h5713.png" alt="H5713" class="w-full h-full object-cover"></div>
+                    <div class="p-6"><span class="text-xs font-bold text-amber-600 uppercase tracking-wider block mb-1">Before & After</span><h3 class="text-lg font-bold text-gray-950 mb-2">H5713 – Landscape Makeover Project</h3><p class="text-xs text-gray-500 font-medium mb-3">Client: Waqas Ali • Location: Multan, Punjab</p><p class="text-gray-600 text-xs leading-relaxed">A neglected outdoor area converted into a vibrant landscaped garden. Features new planting, lighting, and recreational spaces.</p></div>
+                </div>
+
+                <div class="project-card bg-gray-50 border border-gray-100 rounded-xl overflow-hidden shadow-sm" data-category="construction">
+                    <div class="h-56 bg-gray-200 relative"><img src="h5714.png" alt="H5714" class="w-full h-full object-cover"></div>
+                    <div class="p-6"><span class="text-xs font-bold text-amber-600 uppercase tracking-wider block mb-1">Construction</span><h3 class="text-lg font-bold text-gray-950 mb-2">H5714 – Al Madina Homes</h3><p class="text-xs text-gray-500 font-medium mb-3">Client: Muhammad Asif • Location: Sheikhupura, Punjab</p><p class="text-gray-600 text-xs leading-relaxed">Full construction of a modern residential building from foundation to completion. Executed with strict quality control standards.</p></div>
+                </div>
+                <div class="project-card bg-gray-50 border border-gray-100 rounded-xl overflow-hidden shadow-sm" data-category="construction">
+                    <div class="h-56 bg-gray-200 relative"><img src="h5715.png" alt="H5715" class="w-full h-full object-cover"></div>
+                    <div class="p-6"><span class="text-xs font-bold text-amber-600 uppercase tracking-wider block mb-1">Construction</span><h3 class="text-lg font-bold text-gray-950 mb-2">H5715 – Faisal Commercial Complex</h3><p class="text-xs text-gray-500 font-medium mb-3">Client: Rizwan Akram • Location: Gujrat, Punjab</p><p class="text-gray-600 text-xs leading-relaxed">Large-scale commercial construction project with retail and office facilities. Completed within the planned schedule.</p></div>
+                </div>
+                <div class="project-card bg-gray-50 border border-gray-100 rounded-xl overflow-hidden shadow-sm" data-category="construction">
+                    <div class="h-56 bg-gray-200 relative"><img src="h5716.png" alt="H5716" class="w-full h-full object-cover"></div>
+                    <div class="p-6"><span class="text-xs font-bold text-amber-600 uppercase tracking-wider block mb-1">Construction</span><h3 class="text-lg font-bold text-gray-950 mb-2">H5716 – Noor Residency</h3><p class="text-xs text-gray-500 font-medium mb-3">Client: Hafiz Salman • Location: Sargodha, Punjab</p><p class="text-gray-600 text-xs leading-relaxed">Residential construction project focused on durability and modern living. Built using high-quality materials and craftsmanship.</p></div>
+                </div>
+                <div class="project-card bg-gray-50 border border-gray-100 rounded-xl overflow-hidden shadow-sm" data-category="construction">
+                    <div class="h-56 bg-gray-200 relative"><img src="h5717.png" alt="H5717" class="w-full h-full object-cover"></div>
+                    <div class="p-6"><span class="text-xs font-bold text-amber-600 uppercase tracking-wider block mb-1">Construction</span><h3 class="text-lg font-bold text-gray-950 mb-2">H5717 – 2 Kanal House</h3><p class="text-xs text-gray-500 font-medium mb-3">Client: Tariq Mahmood • Location: Rawalpindi, Punjab</p><p class="text-gray-600 text-xs leading-relaxed">Multi-unit residential apartment project featuring modern amenities. Designed for comfort and efficient use of space.</p></div>
+                </div>
+                <div class="project-card bg-gray-50 border border-gray-100 rounded-xl overflow-hidden shadow-sm" data-category="construction">
+                    <div class="h-56 bg-gray-200 relative"><img src="h5718.png" alt="H5718" class="w-full h-full object-cover"></div>
+                    <div class="p-6"><span class="text-xs font-bold text-amber-600 uppercase tracking-wider block mb-1">Construction</span><h3 class="text-lg font-bold text-gray-950 mb-2">H5718 – Al Hamra House </h3><p class="text-xs text-gray-500 font-medium mb-3">Client: Junaid Ahmad • Location: Hyderabad, Sindh</p><p class="text-gray-600 text-xs leading-relaxed">Commercial construction project with contemporary architecture and ample retail space. Developed to support local businesses.</p></div>
+                </div>
+                <div class="project-card bg-gray-50 border border-gray-100 rounded-xl overflow-hidden shadow-sm" data-category="construction">
+                    <div class="h-56 bg-gray-200 relative"><img src="h5719.png" alt="H5719" class="w-full h-full object-cover"></div>
+                    <div class="p-6"><span class="text-xs font-bold text-amber-600 uppercase tracking-wider block mb-1">Construction</span><h3 class="text-lg font-bold text-gray-950 mb-2">H5719 – Green City Residence</h3><p class="text-xs text-gray-500 font-medium mb-3">Client: Danish Iqbal • Location: Abbottabad, KPK</p><p class="text-gray-600 text-xs leading-relaxed">Custom-built family residence with modern construction techniques and elegant finishes. Designed for long-term value and comfort.</p></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="why-choose-us" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">Why Choose Us</h2>
+                <div class="w-16 h-1 bg-amber-600 mx-auto mt-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 flex flex-col sm:flex-row">
+                    <div class="sm:w-48 h-48 bg-gray-200 shrink-0"><img src="team.png" alt="Professional Team" class="w-full h-full object-cover"></div>
+                    <div class="p-6 flex flex-col justify-center">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Professional Team</h3>
+                        <p class="text-gray-600 text-xs leading-relaxed">Our experienced architects, engineers, and construction experts work together to deliver exceptional results. We are committed to creativity, quality, and client satisfaction.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 flex flex-col sm:flex-row">
+                    <div class="sm:w-48 h-48 bg-gray-200 shrink-0"><img src="qualityconstruction.png" alt="Quality Construction" class="w-full h-full object-cover"></div>
+                    <div class="p-6 flex flex-col justify-center">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Quality Construction</h3>
+                        <p class="text-gray-600 text-xs leading-relaxed">We use high-quality materials and proven construction methods to ensure durability and excellence. Every project is built to meet the highest industry standards.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 flex flex-col sm:flex-row">
+                    <div class="sm:w-48 h-48 bg-gray-200 shrink-0"><img src="on time delivery.png" alt="On-Time Delivery" class="w-full h-full object-cover"></div>
+                    <div class="p-6 flex flex-col justify-center">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">On-Time Delivery</h3>
+                        <p class="text-gray-600 text-xs leading-relaxed">We carefully manage every stage of the project to ensure timely completion. Our commitment to deadlines helps clients move forward with confidence.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 flex flex-col sm:flex-row">
+                    <div class="sm:w-48 h-48 bg-gray-200 shrink-0"><img src="modern design.png" alt="Modern Designs" class="w-full h-full object-cover"></div>
+                    <div class="p-6 flex flex-col justify-center">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Modern Designs</h3>
+                        <p class="text-gray-600 text-xs leading-relaxed">We create innovative and contemporary designs that combine aesthetics with functionality. Our solutions are tailored to meet modern lifestyles and project requirements.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">Our Working Process</h2>
+                <div class="w-16 h-1 bg-amber-600 mx-auto mt-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+                <div class="bg-gray-50 border border-gray-100 rounded-xl p-5 text-center shadow-sm">
+                    <div class="w-full h-32 bg-gray-200 rounded-lg overflow-hidden mb-4"><img src="Consultation.png" alt="Consultation" class="w-full h-full object-cover"></div>
+                    <span class="text-xs font-bold bg-amber-100 text-amber-700 px-2.5 py-1 rounded-full uppercase tracking-wider block w-max mx-auto mb-3">01. Consult</span>
+                    <h3 class="font-bold text-gray-900 mb-2 text-sm">Consultation</h3>
+                    <p class="text-gray-600 text-xs leading-relaxed">We discuss your ideas, requirements, and budget to understand the project scope. Our team provides expert guidance to help bring your vision to life.</p>
+                </div>
+                <div class="bg-gray-50 border border-gray-100 rounded-xl p-5 text-center shadow-sm">
+                    <div class="w-full h-32 bg-gray-200 rounded-lg overflow-hidden mb-4"><img src="design.png" alt="Design" class="w-full h-full object-cover"></div>
+                    <span class="text-xs font-bold bg-amber-100 text-amber-700 px-2.5 py-1 rounded-full uppercase tracking-wider block w-max mx-auto mb-3">02. Design</span>
+                    <h3 class="font-bold text-gray-900 mb-2 text-sm">Design</h3>
+                    <p class="text-gray-600 text-xs leading-relaxed">We create innovative and functional designs tailored to your needs. Every detail is carefully planned to ensure beauty, comfort, and efficiency.</p>
+                </div>
+                <div class="bg-gray-50 border border-gray-100 rounded-xl p-5 text-center shadow-sm">
+                    <div class="w-full h-32 bg-gray-200 rounded-lg overflow-hidden mb-4"><img src="planing.png" alt="Planning" class="w-full h-full object-cover"></div>
+                    <span class="text-xs font-bold bg-amber-100 text-amber-700 px-2.5 py-1 rounded-full uppercase tracking-wider block w-max mx-auto mb-3">03. Plan</span>
+                    <h3 class="font-bold text-gray-900 mb-2 text-sm">Planning</h3>
+                    <p class="text-gray-600 text-xs leading-relaxed">Detailed drawings, schedules, and project strategies are prepared for smooth execution. Proper planning helps ensure quality and timely completion.</p>
+                </div>
+                <div class="bg-gray-50 border border-gray-100 rounded-xl p-5 text-center shadow-sm">
+                    <div class="w-full h-32 bg-gray-200 rounded-lg overflow-hidden mb-4"><img src="construction.png" alt="Construction" class="w-full h-full object-cover"></div>
+                    <span class="text-xs font-bold bg-amber-100 text-amber-700 px-2.5 py-1 rounded-full uppercase tracking-wider block w-max mx-auto mb-3">04. Build</span>
+                    <h3 class="font-bold text-gray-900 mb-2 text-sm">Construction</h3>
+                    <p class="text-gray-600 text-xs leading-relaxed">Our skilled team builds your project with precision, quality materials, and professional workmanship. We maintain high standards throughout every stage.</p>
+                </div>
+                <div class="bg-gray-50 border border-gray-100 rounded-xl p-5 text-center shadow-sm">
+                    <div class="w-full h-32 bg-gray-200 rounded-lg overflow-hidden mb-4"><img src="handover.png" alt="Handover" class="w-full h-full object-cover"></div>
+                    <span class="text-xs font-bold bg-amber-100 text-amber-700 px-2.5 py-1 rounded-full uppercase tracking-wider block w-max mx-auto mb-3">05. Handover</span>
+                    <h3 class="font-bold text-gray-900 mb-2 text-sm">Handover</h3>
+                    <p class="text-gray-600 text-xs leading-relaxed">After final inspections and quality checks, the completed project is delivered to you. We ensure everything is ready for immediate use and satisfaction.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">Our Professional Experts</h2>
+                <div class="w-16 h-1 bg-amber-600 mx-auto mt-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+                <div class="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm text-center p-4">
+                    <div class="w-full h-56 bg-gray-100 rounded-lg overflow-hidden mb-4"><img src="female.png" alt="Hareem lutfi" class="w-full h-full object-cover"></div>
+                    <h3 class="text-base font-bold text-gray-900">Hareem Lutfi</h3>
+                    <p class="text-xs text-amber-600 font-medium mb-3">Architect</p>
+                    <p class="text-[11px] text-gray-500 leading-normal">Bachelor in Architecture • 4 Years Experience<br><span class="text-gray-400">Location: Kot Ghulam Muhammad</span></p>
+                </div>
+                <div class="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm text-center p-4 ring-2 ring-amber-500/20">
+                    <div class="w-full h-56 bg-gray-100 rounded-lg overflow-hidden mb-4"><img src="ranaumair1.png" alt="Rana Umair Ashraf" class="w-full h-full object-cover"></div>
+                    <h3 class="text-base font-bold text-gray-900">Rana Umair Ashraf</h3>
+                    <p class="text-xs text-amber-600 font-medium mb-3">CEO / Architect</p>
+                    <p class="text-[11px] text-gray-500 leading-normal">CEO Hadi Architect & Builder • 5 Years Experience<br><span class="text-gray-400">Location: Pattoki</span></p>
+                </div>
+                <div class="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm text-center p-4">
+                    <div class="w-full h-56 bg-gray-100 rounded-lg overflow-hidden mb-4"><img src="ahsankhan.png" alt="Ahsan Kamran" class="w-full h-full object-cover"></div>
+                    <h3 class="text-base font-bold text-gray-900">Ahsan Kamran</h3>
+                    <p class="text-xs text-amber-600 font-medium mb-3">Civil Engineer</p>
+                    <p class="text-[11px] text-gray-500 leading-normal">Associate Civil Engineer • 7 Years Experience<br><span class="text-gray-400">Location: Sargodha</span></p>
+                </div>
+                <div class="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm text-center p-4">
+                    <div class="w-full h-56 bg-gray-100 rounded-lg overflow-hidden mb-4"><img src="male.png" alt="Saad Abbas" class="w-full h-full object-cover"></div>
+                    <h3 class="text-base font-bold text-gray-900">Saad Abbas</h3>
+                    <p class="text-xs text-amber-600 font-medium mb-3">Town Planner</p>
+                    <p class="text-[11px] text-gray-500 leading-normal">Bachelor in Town Planner • 2 Years Experience<br><span class="text-gray-400">Location: Pattoki</span></p>
+                </div>
+                <div class="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm text-center p-4">
+                    <div class="w-full h-56 bg-gray-100 rounded-lg overflow-hidden mb-4"><img src="ranawaseem.jpeg" alt="Rana Waseem Akhtar" class="w-full h-full object-cover"></div>
+                    <h3 class="text-base font-bold text-gray-900">Rana Waseem Akhtar</h3>
+                    <p class="text-xs text-amber-600 font-medium mb-3">Landscaping Specialist</p>
+                    <p class="text-[11px] text-gray-500 leading-normal">CEO Dua Nursery Farm • 10 Years Experience<br><span class="text-gray-400">Location: Pattoki</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">Get In Touch</h2>
+                <div class="w-16 h-1 bg-amber-600 mx-auto mt-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                <div class="space-y-4">
+                    <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 flex items-center gap-4">
+                        <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-xl shrink-0"><i class="fa-solid fa-phone"></i></div>
+                        <div>
+                            <h4 class="text-sm font-bold text-gray-900 uppercase tracking-wider">Call or WhatsApp</h4>
+                            <p class="text-gray-700 font-medium text-sm mt-0.5">0324 530 1575</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 flex items-center gap-4">
+                        <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-xl shrink-0"><i class="fa-solid fa-envelope"></i></div>
+                        <div>
+                            <h4 class="text-sm font-bold text-gray-900 uppercase tracking-wider">Email Address</h4>
+                            <p class="text-gray-700 font-medium text-sm mt-0.5">hadiarchitectbuilder@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 flex items-center gap-4">
+                        <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-xl shrink-0"><i class="fa-solid fa-location-dot"></i></div>
+                        <div>
+                            <h4 class="text-sm font-bold text-gray-900 uppercase tracking-wider">Office Location</h4>
+                            <p class="text-gray-700 font-medium text-sm mt-0.5">Pattoki, Punjab, Pakistan</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-2 h-72 lg:h-full min-h-[300px] rounded-xl overflow-hidden border border-gray-200 shadow-inner relative bg-gray-100">
+                    <iframe class="w-full h-full border-0 grayscale hover:grayscale-0 transition dynamic-map" src="https://maps.google.com/maps?q=Pattoki,Punjab,Pakistan&t=&z=13&ie=UTF-8&iwloc=&output=embed" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-950 text-white pt-16 pb-8 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <i class="fa-solid fa-compass-drafting text-amber-500 text-2xl"></i>
+                    <span class="text-lg font-bold uppercase tracking-wider">Hadi Architect & Builder</span>
+                </div>
+                <p class="text-gray-400 text-xs leading-relaxed max-w-sm">Transforming ideas into functional, premium, sustainable spaces under professional Pakistani local architectural benchmarks.</p>
+            </div>
+            <div>
+                <h4 class="text-amber-500 font-bold uppercase tracking-wider text-xs mb-4">Quick Links</h4>
+                <div class="grid grid-cols-2 gap-2 text-xs text-gray-400">
+                    <a href="#home" class="hover:text-white transition">Home</a>
+                    <a href="#about" class="hover:text-white transition">About Us</a>
+                    <a href="#services" class="hover:text-white transition">Services</a>
+                    <a href="#projects" class="hover:text-white transition">Portfolio</a>
+                    <a href="#why-choose-us" class="hover:text-white transition">Why Us</a>
+                    <a href="#process" class="hover:text-white transition">Our Process</a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-amber-500 font-bold uppercase tracking-wider text-xs mb-4">Follow Our Media</h4>
+                <div class="flex items-center gap-3">
+                    <a href="https://www.facebook.com/share/1EMnAPvCox/?mibextid=wwXIfr" target="_blank" class="w-9 h-9 bg-gray-900 hover:bg-amber-600 text-gray-300 hover:text-white flex items-center justify-center rounded transition text-sm"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.tiktok.com/@hadiarchitect?_r=1&_t=ZS-974FFJFcTCB" target="_blank" class="w-9 h-9 bg-gray-900 hover:bg-amber-600 text-gray-300 hover:text-white flex items-center justify-center rounded transition text-sm"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="https://www.instagram.com/hadiarchitectbuilder?igsh=MWV2bGgxbDY5eG54bA%3D%3D&utm_source=qr" target="_blank" class="w-9 h-9 bg-gray-900 hover:bg-amber-600 text-gray-300 hover:text-white flex items-center justify-center rounded transition text-sm"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://youtube.com/@hadiarchitectbuilder?si=m0OUbTgrVG3WM1SM" target="_blank" class="w-9 h-9 bg-gray-900 hover:bg-amber-600 text-gray-300 hover:text-white flex items-center justify-center rounded transition text-sm"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-gray-900 pt-8 text-center text-xs text-gray-500">
+            <p>© 2026 Hadi Architect & Builder. All Rights Reserved.</p>
+            <p>Version: v1.0 | Last Updated: June 13,2026 2.</p>
+        </div>
+    </footer>
+
+    <div class="fixed bottom-6 right-6 z-50">
+        <a href="https://wa.me/923245301575" target="_blank" class="w-14 h-14 bg-green-500 hover:bg-green-600 text-white rounded-full flex items-center justify-center shadow-2xl transition hover:scale-105 relative group" title="Chat on WhatsApp">
+            <i class="fa-brands fa-whatsapp text-3xl"></i>
+            <span class="absolute right-16 bg-gray-900 text-white text-xs font-medium px-2.5 py-1.5 rounded shadow whitespace-nowrap opacity-0 group-hover:opacity-100 transition duration-200 pointer-events-none">Chat With Us</span>
+        </a>
+    </div>
+
+    <script>
+        // Hero Slide Show Loop Automation Script Block
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        
+        function showNextSlide() {
+            slides[currentSlideIndex].classList.remove('active');
+            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+            slides[currentSlideIndex].classList.add('active');
+        }
+        setInterval(showNextSlide, 4500);
+
+        // Mobile Menu Navigation Toggle Controls
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            menu.classList.toggle('hidden');
+            if(menu.classList.contains('hidden')) {
+                icon.className = "fa-solid fa-bars";
+            } else {
+                icon.className = "fa-solid fa-xmark";
+            }
+        }
+
+        // Project Categories Filter Logic Block Engine
+        function filterProjects(category) {
+            const cards = document.querySelectorAll('.project-card');
+            const buttons = document.querySelectorAll('.project-btn');
+            
+            // Adjust Active Styling on Filter Trigger Button Targets
+            buttons.forEach(btn => {
+                if(btn.getAttribute('onclick').includes(`'${category}'`)) {
+                    btn.className = "project-btn px-5 py-2.5 rounded text-sm font-semibold bg-amber-600 text-white shadow transition";
+                } else {
+                    btn.className = "project-btn px-5 py-2.5 rounded text-sm font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200 transition";
+                }
+            });
+
+            // Handle Card Element Visibility Transitions Smoothly
+            cards.forEach(card => {
+                if(category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
