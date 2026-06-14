@@ -4,616 +4,812 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hadi Architect & Builder</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .slide { display: none; }
-        .slide.active { display: block; }
+        .slide { opacity: 0; transition: opacity 1.2s ease-in-out; }
+        .slide.active { opacity: 1; }
+        .glass-nav { backdrop-filter: blur(16px); background-color: rgba(17, 17, 17, 0.9); }
+        .blueprint-bg {
+            background-image: radial-gradient(rgba(212, 175, 55, 0.04) 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+        
+        /* Floating Buttons Animation */
+        @keyframes customFloat {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: customFloat 3s ease-in-out infinite;
+        }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+<body class="bg-[#111111] text-[#FFFFFF] font-sans antialiased selection:bg-[#D4AF37] selection:text-black blueprint-bg">
 
-    <header class="sticky top-0 z-50 bg-white shadow-md">
+    <header class="sticky top-0 z-50 glass-nav border-b border-stone-900 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <div class="flex items-center gap-2">
-                <i class="fa-solid fa-compass-drafting text-amber-600 text-3xl"></i>
+            <div class="flex items-center gap-3">
+                <div class="w-11 h-11 bg-[#D4AF37]/10 border border-[#D4AF37]/30 rounded-lg flex items-center justify-center text-[#D4AF37] shadow-[0_0_20px_rgba(212,175,55,0.08)]">
+                    <i class="fa-solid fa-compass-drafting text-lg"></i>
+                </div>
                 <div>
-                    <span class="text-xl font-bold tracking-tight text-gray-900 block leading-tight">HADI</span>
-                    <span class="text-xs tracking-widest text-amber-600 uppercase font-semibold block">Architect & Builder</span>
+                    <span class="text-2xl font-serif tracking-wide text-[#FFFFFF] block leading-tight">HADI</span>
+                    <span class="text-[9px] tracking-[0.3em] text-[#D4AF37] uppercase font-bold block">Architect & Builder</span>
                 </div>
             </div>
-            <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
-                <a href="#home" class="hover:text-amber-600 transition">Home</a>
-                <a href="#about" class="hover:text-amber-600 transition">About</a>
-                <a href="#services" class="hover:text-amber-600 transition">Services</a>
-                <a href="#projects" class="hover:text-amber-600 transition">Projects</a>
-                <a href="#why-choose-us" class="hover:text-amber-600 transition">Why Us</a>
-                <a href="#process" class="hover:text-amber-600 transition">Process</a>
-                <a href="#team" class="hover:text-amber-600 transition">Our Team</a>
-                <a href="#contact" class="bg-amber-600 text-white px-4 py-2 rounded shadow hover:bg-amber-700 transition">Get Quote</a>
+            <nav class="hidden md:flex items-center gap-8 text-xs font-medium tracking-[0.15em] uppercase">
+                <a href="#home" class="text-stone-400 hover:text-[#D4AF37] transition-colors">Home</a>
+                <a href="#about" class="text-stone-400 hover:text-[#D4AF37] transition-colors">About</a>
+                <a href="#services" class="text-stone-400 hover:text-[#D4AF37] transition-colors">Services</a>
+                <a href="#projects" class="text-stone-400 hover:text-[#D4AF37] transition-colors">Projects</a>
+                <a href="#why-choose-us" class="text-stone-400 hover:text-[#D4AF37] transition-colors">Why Us</a>
+                <a href="#process" class="text-stone-400 hover:text-[#D4AF37] transition-colors">Process</a>
+                <a href="#team" class="text-stone-400 hover:text-[#D4AF37] transition-colors">Team</a>
+                <a href="#contact" class="bg-[#D4AF37] hover:bg-[#e5c158] text-black px-6 py-3 rounded-md shadow-lg shadow-[#D4AF37]/10 transition-all font-bold uppercase tracking-wider">Get Quote</a>
             </nav>
-            <button onclick="toggleMobileMenu()" class="md:hidden text-gray-700 text-2xl focus:outline-none">
+            <button onclick="toggleMobileMenu()" class="md:hidden text-stone-300 text-2xl focus:outline-none hover:text-[#FFFFFF]">
                 <i class="fa-solid fa-bars" id="menu-icon"></i>
             </button>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-4 py-4 space-y-3 shadow-inner">
-            <a href="#home" onclick="toggleMobileMenu()" class="block text-gray-700 hover:text-amber-600 font-medium">Home</a>
-            <a href="#about" onclick="toggleMobileMenu()" class="block text-gray-700 hover:text-amber-600 font-medium">About</a>
-            <a href="#services" onclick="toggleMobileMenu()" class="block text-gray-700 hover:text-amber-600 font-medium">Services</a>
-            <a href="#projects" onclick="toggleMobileMenu()" class="block text-gray-700 hover:text-amber-600 font-medium">Projects</a>
-            <a href="#why-choose-us" onclick="toggleMobileMenu()" class="block text-gray-700 hover:text-amber-600 font-medium">Why Us</a>
-            <a href="#process" onclick="toggleMobileMenu()" class="block text-gray-700 hover:text-amber-600 font-medium">Process</a>
-            <a href="#team" onclick="toggleMobileMenu()" class="block text-gray-700 hover:text-amber-600 font-medium">Our Team</a>
-            <a href="#contact" onclick="toggleMobileMenu()" class="block text-center bg-amber-600 text-white px-4 py-2 rounded">Get Quote</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-[#1E1E1E] border-b border-stone-900 px-6 py-6 space-y-4 shadow-2xl backdrop-blur-lg">
+            <a href="#home" onclick="toggleMobileMenu()" class="block text-stone-300 hover:text-[#D4AF37] font-medium tracking-wide">Home</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="block text-stone-300 hover:text-[#D4AF37] font-medium tracking-wide">About</a>
+            <a href="#services" onclick="toggleMobileMenu()" class="block text-stone-300 hover:text-[#D4AF37] font-medium tracking-wide">Services</a>
+            <a href="#projects" onclick="toggleMobileMenu()" class="block text-stone-300 hover:text-[#D4AF37] font-medium tracking-wide">Projects</a>
+            <a href="#why-choose-us" onclick="toggleMobileMenu()" class="block text-stone-300 hover:text-[#D4AF37] font-medium tracking-wide">Why Us</a>
+            <a href="#process" onclick="toggleMobileMenu()" class="block text-stone-300 hover:text-[#D4AF37] font-medium tracking-wide">Process</a>
+            <a href="#team" onclick="toggleMobileMenu()" class="block text-stone-300 hover:text-[#D4AF37] font-medium tracking-wide">Our Team</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block text-center bg-[#D4AF37] text-black px-4 py-3 rounded-md font-bold">Get Quote</a>
         </div>
     </header>
 
-    <section id="home" class="relative bg-gray-900 text-white overflow-hidden min-h-[85vh] flex items-center">
+    <section id="home" class="relative overflow-hidden min-h-[92vh] flex items-center border-b border-stone-900">
         <div class="absolute inset-0 z-0">
-            <div class="slide active absolute inset-0 bg-cover bg-center transition-all duration-1000" style="background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('s1.png');"></div>
-            <div class="slide absolute inset-0 bg-cover bg-center transition-all duration-1000" style="background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('s2.png');"></div>
-            <div class="slide absolute inset-0 bg-cover bg-center transition-all duration-1000" style="background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('s3.png');"></div>
-            <div class="slide absolute inset-0 bg-cover bg-center transition-all duration-1000" style="background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('s4.png');"></div>
-            <div class="slide absolute inset-0 bg-cover bg-center transition-all duration-1000" style="background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('s5.png');"></div>
-            <div class="slide absolute inset-0 bg-cover bg-center transition-all duration-1000" style="background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('s6.png');"></div>
-            <div class="slide absolute inset-0 bg-cover bg-center transition-all duration-1000" style="background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('s7.png');"></div>
-            <div class="slide absolute inset-0 bg-cover bg-center transition-all duration-1000" style="background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('s8.png');"></div>
-            <div class="slide absolute inset-0 bg-cover bg-center transition-all duration-1000" style="background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('s9.png');"></div>
-            <div class="slide absolute inset-0 bg-cover bg-center transition-all duration-1000" style="background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('s10.png');"></div>
+            <div class="slide active absolute inset-0 bg-cover bg-center" style="background-image: linear-gradient(rgba(17,17,17,0.85), rgba(17,17,17,0.92)), url('s1.png');"></div>
+            <div class="slide absolute inset-0 bg-cover bg-center" style="background-image: linear-gradient(rgba(17,17,17,0.85), rgba(17,17,17,0.92)), url('s2.png');"></div>
+            <div class="slide absolute inset-0 bg-cover bg-center" style="background-image: linear-gradient(rgba(17,17,17,0.85), rgba(17,17,17,0.92)), url('s3.png');"></div>
+            <div class="slide absolute inset-0 bg-cover bg-center" style="background-image: linear-gradient(rgba(17,17,17,0.85), rgba(17,17,17,0.92)), url('s4.png');"></div>
+            <div class="slide absolute inset-0 bg-cover bg-center" style="background-image: linear-gradient(rgba(17,17,17,0.85), rgba(17,17,17,0.92)), url('s5.png');"></div>
+            <div class="slide absolute inset-0 bg-cover bg-center" style="background-image: linear-gradient(rgba(17,17,17,0.85), rgba(17,17,17,0.92)), url('s6.png');"></div>
+            <div class="slide absolute inset-0 bg-cover bg-center" style="background-image: linear-gradient(rgba(17,17,17,0.85), rgba(17,17,17,0.92)), url('s7.png');"></div>
+            <div class="slide absolute inset-0 bg-cover bg-center" style="background-image: linear-gradient(rgba(17,17,17,0.85), rgba(17,17,17,0.92)), url('s8.png');"></div>
+            <div class="slide absolute inset-0 bg-cover bg-center" style="background-image: linear-gradient(rgba(17,17,17,0.85), rgba(17,17,17,0.92)), url('s9.png');"></div>
+            <div class="slide absolute inset-0 bg-cover bg-center" style="background-image: linear-gradient(rgba(17,17,17,0.85), rgba(17,17,17,0.92)), url('s10.png');"></div>
         </div>
 
         <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <span class="text-amber-500 font-semibold tracking-widest uppercase text-xs sm:text-sm block mb-3">Welcome to Hadi Architect & Builder</span>
-            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
-                Transforming Visions Into <span class="text-amber-500">Exceptional Spaces</span>
+            <span class="text-[#D4AF37] font-semibold tracking-[0.4em] uppercase text-[11px] block mb-5">Architecture & Construction Excellence</span>
+            <h1 class="text-4xl sm:text-6xl font-serif tracking-wide mb-6 leading-tight text-[#FFFFFF]">
+                Crafting Spaces with <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#FFF]">Precision & Luxury</span>
             </h1>
-            <p class="text-base sm:text-lg text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed">
-                We are a trusted name in architecture, construction, interior design, and landscape development. Led by Founder & CEO Rana Umair Ashraf, we are committed to transforming ideas into exceptional spaces through innovative design, quality craftsmanship, and professional expertise.
+            <p class="text-sm sm:text-base text-stone-400 max-w-3xl mx-auto mb-12 leading-relaxed font-light">
+                Led by Founder & CEO Rana Umair Ashraf, we bring your architectural vision to life with high-end 3D rendering, structural perfection, and immaculate space optimization across Pakistan.
             </p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="#contact" class="bg-amber-600 hover:bg-amber-700 text-white font-semibold px-8 py-3.5 rounded shadow-lg transition">
-                    Get Quote <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+            <div class="flex flex-wrap justify-center gap-5">
+                <a href="#contact" class="bg-[#D4AF37] hover:bg-[#e5c158] text-black font-bold px-8 py-4 rounded-md shadow-lg shadow-[#D4AF37]/10 transition-all hover:-translate-y-0.5 uppercase tracking-wider text-xs">
+                    Start Your Project <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
                 </a>
-                <a href="#projects" class="border border-white/40 hover:border-white text-white bg-white/5 hover:bg-white/10 font-semibold px-8 py-3.5 rounded transition">
-                    View Portfolio
+                <a href="#projects" class="border border-stone-800 hover:border-[#D4AF37] text-stone-200 bg-[#1E1E1E]/40 hover:bg-[#1E1E1E] font-semibold px-8 py-4 rounded-md transition-all uppercase tracking-wider text-xs">
+                    Explore Work
                 </a>
             </div>
         </div>
     </section>
 
-    <section id="about" class="py-20 bg-white">
+    <section id="about" class="py-28 bg-[#111111] relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">About Our Company</h2>
-                <div class="w-16 h-1 bg-amber-600 mx-auto mt-4"></div>
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="text-3xl font-serif tracking-wide text-[#FFFFFF] sm:text-4xl">The Design Studio</h2>
+                <p class="text-stone-500 text-xs uppercase tracking-[0.2em] mt-3">Redefining modern engineering benchmarks</p>
+                <div class="w-16 h-[1px] bg-[#D4AF37] mx-auto mt-5"></div>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
-                <div class="bg-gray-50 p-8 rounded-xl border border-gray-100 shadow-sm">
-                    <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center text-amber-600 text-xl font-bold mb-6">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-24">
+                <div class="bg-[#1E1E1E] p-8 rounded-lg border border-stone-900 hover:border-stone-800 transition-all duration-300 group">
+                    <div class="w-12 h-12 bg-[#D4AF37]/5 border border-[#D4AF37]/20 rounded-md flex items-center justify-center text-[#D4AF37] text-lg mb-6 group-hover:bg-[#D4AF37] group-hover:text-black transition-all duration-300">
                         <i class="fa-solid fa-building"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Company Profile</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                        Hadi Architect & Builder is a professional architectural, construction, and landscape design company dedicated to delivering innovative and high-quality solutions. Under the leadership of Founder & CEO, Rana Umair Ashraf, we transform ideas into functional, sustainable, and visually appealing spaces.
+                    <h3 class="text-lg font-serif text-[#FFFFFF] mb-3 tracking-wide">Corporate Identity</h3>
+                    <p class="text-stone-400 text-xs leading-relaxed font-light">
+                        Hadi Architect & Builder stands as a premier architectural firm delivering customized end-to-end design, flawless spatial planning, and elite residential constructions with unmatched perfection.
                     </p>
                 </div>
 
-                <div class="bg-gray-50 p-8 rounded-xl border border-gray-100 shadow-sm">
-                    <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center text-amber-600 text-xl font-bold mb-6">
+                <div class="bg-[#1E1E1E] p-8 rounded-lg border border-stone-900 hover:border-stone-800 transition-all duration-300 group">
+                    <div class="w-12 h-12 bg-[#D4AF37]/5 border border-[#D4AF37]/20 rounded-md flex items-center justify-center text-[#D4AF37] text-lg mb-6 group-hover:bg-[#D4AF37] group-hover:text-black transition-all duration-300">
                         <i class="fa-solid fa-bullseye"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Mission & Vision</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                        Our mission is to provide exceptional design and construction services that exceed client expectations. Our vision is to become a trusted leader in architecture and construction through innovation, quality, and excellence.
+                    <h3 class="text-lg font-serif text-[#FFFFFF] mb-3 tracking-wide">Core Purpose</h3>
+                    <p class="text-stone-400 text-xs leading-relaxed font-light">
+                        To construct iconic architectural wonders using precision V-Ray standards and rigorous building layouts that outshine contemporary real-estate structures in durability.
                     </p>
                 </div>
 
-                <div class="bg-gray-50 p-8 rounded-xl border border-gray-100 shadow-sm">
-                    <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center text-amber-600 text-xl font-bold mb-6">
+                <div class="bg-[#1E1E1E] p-8 rounded-lg border border-stone-900 hover:border-stone-800 transition-all duration-300 group">
+                    <div class="w-12 h-12 bg-[#D4AF37]/5 border border-[#D4AF37]/20 rounded-md flex items-center justify-center text-[#D4AF37] text-lg mb-6 group-hover:bg-[#D4AF37] group-hover:text-black transition-all duration-300">
                         <i class="fa-solid fa-star"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Experience & Expertise</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                        With extensive experience in architectural design, construction, interior design, and landscape development, our team delivers projects with precision and professionalism. We combine technical expertise with creative thinking to achieve outstanding results.
+                    <h3 class="text-lg font-serif text-[#FFFFFF] mb-3 tracking-wide">Distinction</h3>
+                    <p class="text-stone-400 text-xs leading-relaxed font-light">
+                        We balance artistic visual design flawlessly with realistic multi-tiered structural execution. From high-grade gray structures to opulent turn-key finishes.
                     </p>
                 </div>
             </div>
 
-            <div class="bg-gray-900 rounded-2xl overflow-hidden shadow-xl max-w-4xl mx-auto text-white">
+            <div class="bg-[#1E1E1E] rounded-xl overflow-hidden shadow-2xl border border-stone-900 max-w-4xl mx-auto text-[#FFFFFF]">
                 <div class="grid grid-cols-1 md:grid-cols-2 items-center">
-                    <div class="h-80 md:h-full bg-gray-800">
-                        <img src="ranaumair.jpeg" alt="Rana Umar Ashraf" class="w-full h-full object-cover object-top">
+                    <div class="h-96 md:h-full bg-[#111111] relative">
+                        <img src="ranaumair.jpeg" alt="Rana Umar Ashraf" class="w-full h-full object-cover object-top filter sepia-[0.15] contrast-[1.05] hover:sepia-0 transition duration-500">
                     </div>
-                    <div class="p-8 sm:p-12">
-                        <span class="text-amber-500 font-semibold text-xs tracking-widest uppercase block mb-2">Executive Leadership</span>
-                        <h3 class="text-2xl sm:text-3xl font-bold mb-1">Rana Umair Ashraf</h3>
-                        <p class="text-gray-400 font-medium mb-6">Founder & CEO</p>
-                        <p class="text-gray-300 text-sm leading-relaxed mb-6">
-                            Guiding Hadi Architect & Builder with a distinct focus on architectural precision, functional excellence, and modern building benchmarks tailored carefully to local Pakistani client spaces.
+                    <div class="p-10 sm:p-14">
+                        <span class="text-[#D4AF37] font-bold text-[10px] tracking-[0.25em] uppercase block mb-2">Executive Leadership</span>
+                        <h3 class="text-2xl sm:text-3xl font-serif mb-1 text-[#FFFFFF] tracking-wide">Rana Umair Ashraf</h3>
+                        <p class="text-stone-400 font-medium text-xs mb-6 uppercase tracking-wider">Founder & CEO</p>
+                        <p class="text-stone-300 text-xs leading-relaxed mb-8 font-light italic">
+                            "Guiding Hadi Architect & Builder with a distinct focus on high-fidelity architectural rendering, precise project management, and flawless physical execution tailored perfectly for local Pakistani requirements."
                         </p>
-                        <div class="w-12 h-0.5 bg-amber-500"></div>
+                        <div class="w-12 h-[1px] bg-[#D4AF37]"></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="services" class="py-20 bg-gray-50">
+    <section id="services" class="py-28 bg-[#111111] border-y border-stone-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">Our Specialized Services</h2>
-                <div class="w-16 h-1 bg-amber-600 mx-auto mt-4"></div>
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="text-3xl font-serif tracking-wide text-[#FFFFFF] sm:text-4xl">Comprehensive Services</h2>
+                <div class="w-16 h-[1px] bg-[#D4AF37] mx-auto mt-5"></div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
-                    <div class="text-amber-600 text-3xl mb-5"><i class="fa-solid fa-pen-ruler"></i></div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-2">Architectural Design</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">We create innovative and functional architectural designs tailored to your needs. Our focus is on aesthetics, efficiency, and sustainability.</p>
+                <div class="bg-[#1E1E1E] p-8 rounded-lg border border-stone-900 hover:border-stone-800 transition duration-300">
+                    <div class="text-[#D4AF37] text-xl mb-5"><i class="fa-solid fa-pen-ruler"></i></div>
+                    <h3 class="text-base font-serif text-[#FFFFFF] mb-2 tracking-wide">Architectural Layouts</h3>
+                    <p class="text-stone-400 text-xs leading-relaxed font-light">Bespoke spatial design schemas drafting tailored luxury residential villas, spaces optimization, and detailed working blueprints.</p>
                 </div>
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
-                    <div class="text-amber-600 text-3xl mb-5"><i class="fa-solid fa-trowel-bricks"></i></div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-2">Building Construction</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">We deliver high-quality construction services with attention to detail and durability. Every project is completed with professional workmanship and care.</p>
+                <div class="bg-[#1E1E1E] p-8 rounded-lg border border-stone-900 hover:border-stone-800 transition duration-300">
+                    <div class="text-[#D4AF37] text-xl mb-5"><i class="fa-solid fa-trowel-bricks"></i></div>
+                    <h3 class="text-base font-serif text-[#FFFFFF] mb-2 tracking-wide">Premium Construction</h3>
+                    <p class="text-stone-400 text-xs leading-relaxed font-light">Turn-key builds executed under meticulous supervisor parameters utilizing unmatched standard concrete blends and superior materials.</p>
                 </div>
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
-                    <div class="text-amber-600 text-3xl mb-5"><i class="fa-solid fa-couch"></i></div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-2">Interior Design</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">We design stylish and comfortable interior spaces that reflect your personality and lifestyle. Our solutions combine beauty with functionality.</p>
+                <div class="bg-[#1E1E1E] p-8 rounded-lg border border-stone-900 hover:border-stone-800 transition duration-300">
+                    <div class="text-[#D4AF37] text-xl mb-5"><i class="fa-solid fa-couch"></i></div>
+                    <h3 class="text-base font-serif text-[#FFFFFF] mb-2 tracking-wide">Interior Architectures</h3>
+                    <p class="text-stone-400 text-xs leading-relaxed font-light">Curating luxury thematic false ceiling patterns, innovative media wall layouts, ambient illumination maps, and custom modular woodwork.</p>
                 </div>
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
-                    <div class="text-amber-600 text-3xl mb-5"><i class="fa-solid fa-cubes"></i></div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-2">3D Visualization & Rendering</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">We provide realistic 3D models and renderings to help clients visualize their projects before construction begins. This ensures better planning and decision-making.</p>
+                <div class="bg-[#1E1E1E] p-8 rounded-lg border border-stone-900 hover:border-stone-800 transition duration-300">
+                    <div class="text-[#D4AF37] text-xl mb-5"><i class="fa-solid fa-cubes"></i></div>
+                    <h3 class="text-base font-serif text-[#FFFFFF] mb-2 tracking-wide">V-Ray 3D Visualizations</h3>
+                    <p class="text-stone-400 text-xs leading-relaxed font-light">Ultra-realistic photorealistic 4K elevation rendering capturing accurate material textures, daylight shadows, and window illumination properties.</p>
                 </div>
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
-                    <div class="text-amber-600 text-3xl mb-5"><i class="fa-solid fa-tree"></i></div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-2">Landscape Design</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">We create attractive outdoor spaces including gardens, lawns, and recreational areas. Our landscape designs enhance both beauty and usability.</p>
+                <div class="bg-[#1E1E1E] p-8 rounded-lg border border-stone-900 hover:border-stone-800 transition duration-300">
+                    <div class="text-[#D4AF37] text-xl mb-5"><i class="fa-solid fa-tree"></i></div>
+                    <h3 class="text-base font-serif text-[#FFFFFF] mb-2 tracking-wide">Landscape Development</h3>
+                    <p class="text-stone-400 text-xs leading-relaxed font-light">Structuring stunning perimeter layouts, contemporary water fixtures, stone pathways, and green lawn systems for estates.</p>
                 </div>
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
-                    <div class="text-amber-600 text-3xl mb-5"><i class="fa-solid fa-list-check"></i></div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-2">Project Planning & Management</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">We oversee every stage of the project from planning to completion. Our management approach ensures quality, efficiency, and timely delivery.</p>
+                <div class="bg-[#1E1E1E] p-8 rounded-lg border border-stone-900 hover:border-stone-800 transition duration-300">
+                    <div class="text-[#D4AF37] text-xl mb-5"><i class="fa-solid fa-list-check"></i></div>
+                    <h3 class="text-base font-serif text-[#FFFFFF] mb-2 tracking-wide">Structural Planning</h3>
+                    <p class="text-stone-400 text-xs leading-relaxed font-light">Rigorous multi-stage operational management tracking timeline allocations, material distributions, and stringent safety alignments.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">Our Project Portfolio</h2>
-                <div class="w-16 h-1 bg-amber-600 mx-auto mt-4"></div>
-            </div>
-
-            <div class="flex flex-wrap justify-center gap-2 mb-12">
-                <button onclick="filterProjects('all')" class="project-btn px-5 py-2.5 rounded text-sm font-semibold bg-amber-600 text-white shadow transition">All Projects</button>
-                <button onclick="filterProjects('residential')" class="project-btn px-5 py-2.5 rounded text-sm font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200 transition">Residential</button>
-                <button onclick="filterProjects('commercial')" class="project-btn px-5 py-2.5 rounded text-sm font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200 transition">Commercial</button>
-                <button onclick="filterProjects('interior')" class="project-btn px-5 py-2.5 rounded text-sm font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200 transition">Interior Design</button>
-                <button onclick="filterProjects('landscape')" class="project-btn px-5 py-2.5 rounded text-sm font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200 transition">Landscape</button>
-                <button onclick="filterProjects('before-after')" class="project-btn px-5 py-2.5 rounded text-sm font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200 transition">Before & After</button>
-                <button onclick="filterProjects('construction')" class="project-btn px-5 py-2.5 rounded text-sm font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200 transition">Construction</button>
-            </div>
-
-            <div id="admin-indicator" class="hidden text-center mb-6 bg-amber-100 text-amber-800 p-2 rounded font-semibold text-sm max-w-xs mx-auto">
-                <i class="fa-solid fa-lock-open mr-2"></i> Admin Mode Active!
-            </div>
-
-            <input type="file" id="admin-file-input" accept="image/*" class="hidden" onchange="handleImageUpload(event)">
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-300" id="project-grid">
-                </div>
-        </div>
-    </section>
-
-    <section id="why-choose-us" class="py-20 bg-gray-50">
+    <section id="projects" class="py-28 bg-[#111111]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">Why Choose Us</h2>
-                <div class="w-16 h-1 bg-amber-600 mx-auto mt-4"></div>
+                <h2 class="text-3xl font-serif tracking-wide text-[#FFFFFF] sm:text-4xl">Master Portfolio</h2>
+                <div class="w-16 h-[1px] bg-[#D4AF37] mx-auto mt-5"></div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 flex flex-col sm:flex-row">
-                    <div class="sm:w-48 h-48 bg-gray-200 shrink-0"><img src="team.png" alt="Professional Team" class="w-full h-full object-cover"></div>
-                    <div class="p-6 flex flex-col justify-center">
-                        <h3 class="text-lg font-bold text-gray-900 mb-2">Professional Team</h3>
-                        <p class="text-gray-600 text-xs leading-relaxed">Our experienced architects, engineers, and construction experts work together to deliver exceptional results. We are committed to creativity, quality, and client satisfaction.</p>
+            <div class="flex flex-wrap justify-center gap-2 mb-16 max-w-5xl mx-auto">
+                <button onclick="filterProjects('all')" class="project-btn px-5 py-2.5 rounded text-xs font-semibold tracking-widest uppercase bg-[#D4AF37] text-black shadow-md transition-all">All</button>
+                <button onclick="filterProjects('residential')" class="project-btn px-5 py-2.5 rounded text-xs font-semibold tracking-widest uppercase bg-[#1E1E1E] text-stone-400 border border-stone-900 hover:text-[#FFFFFF] hover:border-stone-700 transition-all">Residential</button>
+                <button onclick="filterProjects('commercial')" class="project-btn px-5 py-2.5 rounded text-xs font-semibold tracking-widest uppercase bg-[#1E1E1E] text-stone-400 border border-stone-900 hover:text-[#FFFFFF] hover:border-stone-700 transition-all">Commercial</button>
+                <button onclick="filterProjects('interior')" class="project-btn px-5 py-2.5 rounded text-xs font-semibold tracking-widest uppercase bg-[#1E1E1E] text-stone-400 border border-stone-900 hover:text-[#FFFFFF] hover:border-stone-700 transition-all">Interior</button>
+                <button onclick="filterProjects('landscape')" class="project-btn px-5 py-2.5 rounded text-xs font-semibold tracking-widest uppercase bg-[#1E1E1E] text-stone-400 border border-stone-900 hover:text-[#FFFFFF] hover:border-stone-700 transition-all">Landscape</button>
+                <button onclick="filterProjects('before-after')" class="project-btn px-5 py-2.5 rounded text-xs font-semibold tracking-widest uppercase bg-[#1E1E1E] text-stone-400 border border-stone-900 hover:text-[#FFFFFF] hover:border-stone-700 transition-all">Before/After</button>
+                <button onclick="filterProjects('construction')" class="project-btn px-5 py-2.5 rounded text-xs font-semibold tracking-widest uppercase bg-[#1E1E1E] text-stone-400 border border-stone-900 hover:text-[#FFFFFF] hover:border-stone-700 transition-all">Construction</button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="project-grid">
+                
+                <div class="project-card bg-[#1E1E1E] border border-stone-900 rounded overflow-hidden group hover:border-stone-800 transition duration-300" data-category="residential">
+                    <div class="h-60 bg-[#111111] overflow-hidden relative">
+                        <img src="h5699.png" alt="H5699" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-70"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest block mb-1.5">Residential</span>
+                        <h3 class="text-base font-serif text-[#FFFFFF] mb-2 group-hover:text-[#D4AF37] transition-colors tracking-wide">H5699 – Modern Family Residence</h3>
+                        <p class="text-[11px] text-stone-500 font-medium mb-3"><i class="fa-solid fa-location-dot mr-1 text-[#D4AF37]"></i> Lahore, Punjab</p>
+                        <p class="text-stone-400 text-xs leading-relaxed font-light">A stunning contemporary double-story architectural design optimizing space utilization for a premium living ecosystem.</p>
                     </div>
                 </div>
-                <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 flex flex-col sm:flex-row">
-                    <div class="sm:w-48 h-48 bg-gray-200 shrink-0"><img src="qualityconstruction.png" alt="Quality Construction" class="w-full h-full object-cover"></div>
-                    <div class="p-6 flex flex-col justify-center">
-                        <h3 class="text-lg font-bold text-gray-900 mb-2">Quality Construction</h3>
-                        <p class="text-gray-600 text-xs leading-relaxed">We use high-quality materials and proven construction methods to ensure durability and excellence. Every project is built to meet the highest industry standards.</p>
+
+                <div class="project-card bg-[#1E1E1E] border border-stone-900 rounded overflow-hidden group hover:border-stone-800 transition duration-300" data-category="residential">
+                    <div class="h-60 bg-[#111111] overflow-hidden relative">
+                        <img src="h5700.png" alt="H5700" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-70"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest block mb-1.5">Residential</span>
+                        <h3 class="text-base font-serif text-[#FFFFFF] mb-2 group-hover:text-[#D4AF37] transition-colors tracking-wide">H5700 – Green Valley House</h3>
+                        <p class="text-[11px] text-stone-500 font-medium mb-3"><i class="fa-solid fa-location-dot mr-1 text-[#D4AF37]"></i> Islamabad Capital</p>
+                        <p class="text-stone-400 text-xs leading-relaxed font-light">Luxury structural villa planned with modern front-elevation panels, energy conservation parameters, and pristine finishes.</p>
                     </div>
                 </div>
-                <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 flex flex-col sm:flex-row">
-                    <div class="sm:w-48 h-48 bg-gray-200 shrink-0"><img src="on time delivery.png" alt="On-Time Delivery" class="w-full h-full object-cover"></div>
-                    <div class="p-6 flex flex-col justify-center">
-                        <h3 class="text-lg font-bold text-gray-900 mb-2">On-Time Delivery</h3>
-                        <p class="text-gray-600 text-xs leading-relaxed">We carefully manage every stage of the project to ensure timely completion. Our commitment to deadlines helps clients move forward with confidence.</p>
+
+                <div class="project-card bg-[#1E1E1E] border border-stone-900 rounded overflow-hidden group hover:border-stone-800 transition duration-300" data-category="residential">
+                    <div class="h-60 bg-[#111111] overflow-hidden relative">
+                        <img src="h5701.png" alt="H5701" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-70"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest block mb-1.5">Residential</span>
+                        <h3 class="text-base font-serif text-[#FFFFFF] mb-2 group-hover:text-[#D4AF37] transition-colors tracking-wide">H5701 – Al Noor Villa</h3>
+                        <p class="text-[11px] text-stone-500 font-medium mb-3"><i class="fa-solid fa-location-dot mr-1 text-[#D4AF37]"></i> Faisalabad, Punjab</p>
+                        <p class="text-stone-400 text-xs leading-relaxed font-light">Elegant layout formatting incorporating multi-vehicle layout garages, integrated open ventilation, and dynamic lighting scopes.</p>
                     </div>
                 </div>
-                <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 flex flex-col sm:flex-row">
-                    <div class="sm:w-48 h-48 bg-gray-200 shrink-0"><img src="modern design.png" alt="Modern Designs" class="w-full h-full object-cover"></div>
-                    <div class="p-6 flex flex-col justify-center">
-                        <h3 class="text-lg font-bold text-gray-900 mb-2">Modern Designs</h3>
-                        <p class="text-gray-600 text-xs leading-relaxed">We create innovative and contemporary designs that combine aesthetics with functionality. Our solutions are tailored to meet modern lifestyles and project requirements.</p>
+
+                <div class="project-card bg-[#1E1E1E] border border-stone-900 rounded overflow-hidden group hover:border-stone-800 transition duration-300" data-category="residential">
+                    <div class="h-60 bg-[#111111] overflow-hidden relative">
+                        <img src="h5702.png" alt="H5702" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-70"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest block mb-1.5">Residential</span>
+                        <h3 class="text-base font-serif text-[#FFFFFF] mb-2 group-hover:text-[#D4AF37] transition-colors tracking-wide">H5702 – Royal Heights Residence</h3>
+                        <p class="text-[11px] text-stone-500 font-medium mb-3"><i class="fa-solid fa-location-dot mr-1 text-[#D4AF37]"></i> Multan, Punjab</p>
+                        <p class="text-stone-400 text-xs leading-relaxed font-light">A gorgeous bespoke family enclave blending standard cultural preferences fluidly with modern architectural dynamics.</p>
+                    </div>
+                </div>
+
+                <div class="project-card bg-[#1E1E1E] border border-stone-900 rounded overflow-hidden group hover:border-stone-800 transition duration-300" data-category="residential">
+                    <div class="h-60 bg-[#111111] overflow-hidden relative">
+                        <img src="h5703.png" alt="H5703" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-70"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest block mb-1.5">Residential</span>
+                        <h3 class="text-base font-serif text-[#FFFFFF] mb-2 group-hover:text-[#D4AF37] transition-colors tracking-wide">H5703 – Bahria Dream House</h3>
+                        <p class="text-[11px] text-stone-500 font-medium mb-3"><i class="fa-solid fa-location-dot mr-1 text-[#D4AF37]"></i> Rawalpindi, Punjab</p>
+                        <p class="text-stone-400 text-xs leading-relaxed font-light">A hyper-modern layout focused heavily on glass facades, high-grade stone tiling configurations, and spacious structural loops.</p>
+                    </div>
+                </div>
+
+                <div class="project-card bg-[#1E1E1E] border border-stone-900 rounded overflow-hidden group hover:border-stone-800 transition duration-300" data-category="residential">
+                    <div class="h-60 bg-[#111111] overflow-hidden relative">
+                        <img src="h5704.png" alt="H5704" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-70"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest block mb-1.5">Residential</span>
+                        <h3 class="text-base font-serif text-[#FFFFFF] mb-2 group-hover:text-[#D4AF37] transition-colors tracking-wide">H5704 – Garden View Residence</h3>
+                        <p class="text-[11px] text-stone-500 font-medium mb-3"><i class="fa-solid fa-location-dot mr-1 text-[#D4AF37]"></i> Sialkot, Punjab</p>
+                        <p class="text-stone-400 text-xs leading-relaxed font-light">Integrated backyard connection structural lines maximizing cross air ventilation pathways and clean environmental access.</p>
+                    </div>
+                </div>
+
+                <div class="project-card bg-[#1E1E1E] border border-stone-900 rounded overflow-hidden group hover:border-stone-800 transition duration-300" data-category="commercial">
+                    <div class="h-60 bg-[#111111] overflow-hidden relative">
+                        <img src="h5705.png" alt="H5705" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-70"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest block mb-1.5">Commercial</span>
+                        <h3 class="text-base font-serif text-[#FFFFFF] mb-2 group-hover:text-[#D4AF37] transition-colors tracking-wide">H5705 – Al Rehman Center</h3>
+                        <p class="text-[11px] text-stone-500 font-medium mb-3"><i class="fa-solid fa-location-dot mr-1 text-[#D4AF37]"></i> Gujranwala, Punjab</p>
+                        <p class="text-stone-400 text-xs leading-relaxed font-light">Multi-tiered retail complex emphasizing structural glass structural support columns and expansive public walkthrough lanes.</p>
+                    </div>
+                </div>
+
+                <div class="project-card bg-[#1E1E1E] border border-stone-900 rounded overflow-hidden group hover:border-stone-800 transition duration-300" data-category="commercial">
+                    <div class="h-60 bg-[#111111] overflow-hidden relative">
+                        <img src="h5706.png" alt="H5706" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-70"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest block mb-1.5">Commercial</span>
+                        <h3 class="text-base font-serif text-[#FFFFFF] mb-2 group-hover:text-[#D4AF37] transition-colors tracking-wide">H5706 – Pak Trade Plaza</h3>
+                        <p class="text-[11px] text-stone-500 font-medium mb-3"><i class="fa-solid fa-location-dot mr-1 text-[#D4AF37]"></i> Karachi, Sindh</p>
+                        <p class="text-stone-400 text-xs leading-relaxed font-light">Corporate administrative complex featuring high-efficiency utility maps and smart business layout parameters.</p>
+                    </div>
+                </div>
+
+                <div class="project-card bg-[#1E1E1E] border border-stone-900 rounded overflow-hidden group hover:border-stone-800 transition duration-300" data-category="commercial">
+                    <div class="h-60 bg-[#111111] overflow-hidden relative">
+                        <img src="h5707.png" alt="H5707" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-70"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest block mb-1.5">Commercial</span>
+                        <h3 class="text-base font-serif text-[#FFFFFF] mb-2 group-hover:text-[#D4AF37] transition-colors tracking-wide">H5707 – City Square Mall</h3>
+                        <p class="text-[11px] text-stone-500 font-medium mb-3"><i class="fa-solid fa-location-dot mr-1 text-[#D4AF37]"></i> Peshawar, KPK</p>
+                        <p class="text-stone-400 text-xs leading-relaxed font-light">Stunning multi-retail architecture capturing high visual presence and maximizing commercial footprint capabilities.</p>
+                    </div>
+                </div>
+
+                <div class="project-card bg-[#1E1E1E] border border-stone-900 rounded overflow-hidden group hover:border-stone-800 transition duration-300" data-category="interior">
+                    <div class="h-60 bg-[#111111] overflow-hidden relative">
+                        <img src="h5720.png" alt="H5720" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-70"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest block mb-1.5">Interior Design</span>
+                        <h3 class="text-base font-serif text-[#FFFFFF] mb-2 group-hover:text-[#D4AF37] transition-colors tracking-wide">H5720 – Luxury Master Bedroom</h3>
+                        <p class="text-[11px] text-stone-500 font-medium mb-3"><i class="fa-solid fa-location-dot mr-1 text-[#D4AF37]"></i> Lahore, Punjab</p>
+                        <p class="text-stone-400 text-xs leading-relaxed font-light">Impeccable wood cladding accents combined with dynamic LED hidden ceiling illumination fields creating luxury tranquility.</p>
+                    </div>
+                </div>
+
+                <div class="project-card bg-[#1E1E1E] border border-stone-900 rounded overflow-hidden group hover:border-stone-800 transition duration-300" data-category="interior">
+                    <div class="h-60 bg-[#111111] overflow-hidden relative">
+                        <img src="h5721.png" alt="H5721" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-70"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest block mb-1.5">Interior Design</span>
+                        <h3 class="text-base font-serif text-[#FFFFFF] mb-2 group-hover:text-[#D4AF37] transition-colors tracking-wide">H5721 – Corporate Workspace</h3>
+                        <p class="text-[11px] text-stone-500 font-medium mb-3"><i class="fa-solid fa-location-dot mr-1 text-[#D4AF37]"></i> Islamabad</p>
+                        <p class="text-stone-400 text-xs leading-relaxed font-light">Sleek ergonomic workstations formatted around productivity flow metrics utilizing premium matte composite elements.</p>
+                    </div>
+                </div>
+
+                <div class="project-card bg-[#1E1E1E] border border-stone-900 rounded overflow-hidden group hover:border-stone-800 transition duration-300" data-category="interior">
+                    <div class="h-60 bg-[#111111] overflow-hidden relative">
+                        <img src="h5722.png" alt="H5722" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-70"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest block mb-1.5">Interior Design</span>
+                        <h3 class="text-base font-serif text-[#FFFFFF] mb-2 group-hover:text-[#D4AF37] transition-colors tracking-wide">H5722 – High-End Kitchen</h3>
+                        <p class="text-[11px] text-stone-500 font-medium mb-3"><i class="fa-solid fa-location-dot mr-1 text-[#D4AF37]"></i> Faisalabad, Punjab</p>
+                        <p class="text-stone-400 text-xs leading-relaxed font-light">Smart modular storage systems integrated alongside quartz counters mapping flawless culinary workspace management.</p>
+                    </div>
+                </div>
+
+                <div class="project-card bg-[#1E1E1E] border border-stone-900 rounded overflow-hidden group hover:border-stone-800 transition duration-300" data-category="interior">
+                    <div class="h-60 bg-[#111111] overflow-hidden relative">
+                        <img src="h5723.png" alt="H5723" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-70"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest block mb-1.5">Interior Design</span>
+                        <h3 class="text-base font-serif text-[#FFFFFF] mb-2 group-hover:text-[#D4AF37] transition-colors tracking-wide">H5723 – Modern TV Lounge</h3>
+                        <p class="text-[11px] text-stone-500 font-medium mb-3"><i class="fa-solid fa-location-dot mr-1 text-[#D4AF37]"></i> Multan, Punjab</p>
+                        <p class="text-stone-400 text-xs leading-relaxed font-light">Exquisite custom media walls framing geometric layout alignments and comfortable ambient spatial dimensions.</p>
+                    </div>
+                </div>
+
+                <div class="project-card bg-[#1E1E1E] border border-stone-900 rounded overflow-hidden group hover:border-stone-800 transition duration-300" data-category="interior">
+                    <div class="h-60 bg-[#111111] overflow-hidden relative">
+                        <img src="h5724.png" alt="H5724" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-70"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest block mb-1.5">Interior Design</span>
+                        <h3 class="text-base font-serif text-[#FFFFFF] mb-2 group-hover:text-[#D4AF37] transition-colors tracking-wide">H5724 – Brand Boutique</h3>
+                        <p class="text-[11px] text-stone-500 font-medium mb-3"><i class="fa-solid fa-location-dot mr-1 text-[#D4AF37]"></i> Lahore, Punjab</p>
+                        <p class="text-stone-400 text-xs leading-relaxed font-light">Commercial boutique layout using premium spot illumination bars to perfectly highlight luxury products.</p>
+                    </div>
+                </div>
+
+                <div class="project-card bg-[#1E1E1E] border border-stone-900 rounded overflow-hidden group hover:border-stone-800 transition duration-300" data-category="interior">
+                    <div class="h-60 bg-[#111111] overflow-hidden relative">
+                        <img src="h5725.png" alt="H5725" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-70"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest block mb-1.5">Interior Design</span>
+                        <h3 class="text-base font-serif text-[#FFFFFF] mb-2 group-hover:text-[#D4AF37] transition-colors tracking-wide">H5725 – Kids Deluxe Room</h3>
+                        <p class="text-[11px] text-stone-500 font-medium mb-3"><i class="fa-solid fa-location-dot mr-1 text-[#D4AF37]"></i> Rawalpindi, Punjab</p>
+                        <p class="text-stone-400 text-xs leading-relaxed font-light">Vibrant spatial layout tracking smart study setups and space-saving creative furniture mechanics.</p>
+                    </div>
+                </div>
+
+                <div class="project-card bg-[#1E1E1E] border border-stone-900 rounded overflow-hidden group hover:border-stone-800 transition duration-300" data-category="landscape">
+                    <div class="h-60 bg-[#111111] overflow-hidden relative">
+                        <img src="h5708.png" alt="H5708" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-70"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest block mb-1.5">Landscape</span>
+                        <h3 class="text-base font-serif text-[#FFFFFF] mb-2 group-hover:text-[#D4AF37] transition-colors tracking-wide">H5708 – Gulshan Garden</h3>
+                        <p class="text-[11px] text-stone-500 font-medium mb-3"><i class="fa-solid fa-location-dot mr-1 text-[#D4AF37]"></i> Lahore, Punjab</p>
+                        <p class="text-stone-400 text-xs leading-relaxed font-light">Stunning perimeter grass works combined with multi-tier floral layout distribution blueprints.</p>
+                    </div>
+                </div>
+
+                <div class="project-card bg-[#1E1E1E] border border-stone-900 rounded overflow-hidden group hover:border-stone-800 transition duration-300" data-category="landscape">
+                    <div class="h-60 bg-[#111111] overflow-hidden relative">
+                        <img src="h5709.png" alt="H5709" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-70"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest block mb-1.5">Landscape</span>
+                        <h3 class="text-base font-serif text-[#FFFFFF] mb-2 group-hover:text-[#D4AF37] transition-colors tracking-wide">H5709 – Green Park Project</h3>
+                        <p class="text-[11px] text-stone-500 font-medium mb-3"><i class="fa-solid fa-location-dot mr-1 text-[#D4AF37]"></i> Islamabad</p>
+                        <p class="text-stone-400 text-xs leading-relaxed font-light">Contemporary open community spaces formatted with polished stone sitting configurations.</p>
+                    </div>
+                </div>
+
+                <div class="project-card bg-[#1E1E1E] border border-stone-900 rounded overflow-hidden group hover:border-stone-800 transition duration-300" data-category="landscape">
+                    <div class="h-60 bg-[#111111] overflow-hidden relative">
+                        <img src="h5710.png" alt="H5710" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-70"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest block mb-1.5">Landscape</span>
+                        <h3 class="text-base font-serif text-[#FFFFFF] mb-2 group-hover:text-[#D4AF37] transition-colors tracking-wide">H5710 – Royal Lawn Design</h3>
+                        <p class="text-[11px] text-stone-500 font-medium mb-3"><i class="fa-solid fa-location-dot mr-1 text-[#D4AF37]"></i> Bahawalpur, Punjab</p>
+                        <p class="text-stone-400 text-xs leading-relaxed font-light">Elite structural water fountain structures working alongside custom pathway stones layouting.</p>
+                    </div>
+                </div>
+
+                <div class="project-card bg-[#1E1E1E] border border-stone-900 rounded overflow-hidden group hover:border-stone-800 transition duration-300" data-category="before-after">
+                    <div class="h-60 bg-[#111111] overflow-hidden relative">
+                        <img src="h5711.png" alt="H5711" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-70"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest block mb-1.5">Before & After</span>
+                        <h3 class="text-base font-serif text-[#FFFFFF] mb-2 group-hover:text-[#D4AF37] transition-colors tracking-wide">H5711 – Structural Facelift</h3>
+                        <p class="text-[11px] text-stone-500 font-medium mb-3"><i class="fa-solid fa-location-dot mr-1 text-[#D4AF37]"></i> Lahore, Punjab</p>
+                        <p class="text-stone-400 text-xs leading-relaxed font-light">Converting an outdated standard building structure into an ultra-modern multi-story luxury residence.</p>
+                    </div>
+                </div>
+
+                <div class="project-card bg-[#1E1E1E] border border-stone-900 rounded overflow-hidden group hover:border-stone-800 transition duration-300" data-category="before-after">
+                    <div class="h-60 bg-[#111111] overflow-hidden relative">
+                        <img src="h5712.png" alt="H5712" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-70"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest block mb-1.5">Before & After</span>
+                        <h3 class="text-base font-serif text-[#FFFFFF] mb-2 group-hover:text-[#D4AF37] transition-colors tracking-wide">H5712 – Commercial Upgrade</h3>
+                        <p class="text-[11px] text-stone-500 font-medium mb-3"><i class="fa-solid fa-location-dot mr-1 text-[#D4AF37]"></i> Faisalabad, Punjab</p>
+                        <p class="text-stone-400 text-xs leading-relaxed font-light">Complete redesign and glass facade overhaul for a high-traffic urban trade environment.</p>
+                    </div>
+                </div>
+
+                <div class="project-card bg-[#1E1E1E] border border-stone-900 rounded overflow-hidden group hover:border-stone-800 transition duration-300" data-category="before-after">
+                    <div class="h-60 bg-[#111111] overflow-hidden relative">
+                        <img src="h5713.png" alt="H5713" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-70"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest block mb-1.5">Before & After</span>
+                        <h3 class="text-base font-serif text-[#FFFFFF] mb-2 group-hover:text-[#D4AF37] transition-colors tracking-wide">H5713 – Garden Transformation</h3>
+                        <p class="text-[11px] text-stone-500 font-medium mb-3"><i class="fa-solid fa-location-dot mr-1 text-[#D4AF37]"></i> Multan, Punjab</p>
+                        <p class="text-stone-400 text-xs leading-relaxed font-light">Overhaul mapping converting an unmanaged layout space into a premium decorative backyard.</p>
+                    </div>
+                </div>
+
+                <div class="project-card bg-[#1E1E1E] border border-stone-900 rounded overflow-hidden group hover:border-stone-800 transition duration-300" data-category="construction">
+                    <div class="h-60 bg-[#111111] overflow-hidden relative">
+                        <img src="h5714.png" alt="H5714" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-70"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest block mb-1.5">Construction</span>
+                        <h3 class="text-base font-serif text-[#FFFFFF] mb-2 group-hover:text-[#D4AF37] transition-colors tracking-wide">H5714 – Al Madina Homes</h3>
+                        <p class="text-[11px] text-stone-500 font-medium mb-3"><i class="fa-solid fa-location-dot mr-1 text-[#D4AF37]"></i> Sheikhupura, Punjab</p>
+                        <p class="text-stone-400 text-xs leading-relaxed font-light">Full concrete framing build and masonry infrastructure mapped perfectly from foundational soil tests.</p>
+                    </div>
+                </div>
+
+                <div class="project-card bg-[#1E1E1E] border border-stone-900 rounded overflow-hidden group hover:border-stone-800 transition duration-300" data-category="construction">
+                    <div class="h-60 bg-[#111111] overflow-hidden relative">
+                        <img src="h5715.png" alt="H5715" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-70"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest block mb-1.5">Construction</span>
+                        <h3 class="text-base font-serif text-[#FFFFFF] mb-2 group-hover:text-[#D4AF37] transition-colors tracking-wide">H5715 – Commercial Complex</h3>
+                        <p class="text-[11px] text-stone-500 font-medium mb-3"><i class="fa-solid fa-location-dot mr-1 text-[#D4AF37]"></i> Gujrat, Punjab</p>
+                        <p class="text-stone-400 text-xs leading-relaxed font-light">Sturdy heavy commercial column framework optimized for high weight endurance load factors.</p>
+                    </div>
+                </div>
+
+                <div class="project-card bg-[#1E1E1E] border border-stone-900 rounded overflow-hidden group hover:border-stone-800 transition duration-300" data-category="construction">
+                    <div class="h-60 bg-[#111111] overflow-hidden relative">
+                        <img src="h5716.png" alt="H5716" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-70"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest block mb-1.5">Construction</span>
+                        <h3 class="text-base font-serif text-[#FFFFFF] mb-2 group-hover:text-[#D4AF37] transition-colors tracking-wide">H5716 – Noor Residency</h3>
+                        <p class="text-[11px] text-stone-500 font-medium mb-3"><i class="fa-solid fa-location-dot mr-1 text-[#D4AF37]"></i> Sargodha, Punjab</p>
+                        <p class="text-stone-400 text-xs leading-relaxed font-light">High-grade premium masonry and brickwork tracking absolute linearity structural targets.</p>
+                    </div>
+                </div>
+
+                <div class="project-card bg-[#1E1E1E] border border-stone-900 rounded overflow-hidden group hover:border-stone-800 transition duration-300" data-category="construction">
+                    <div class="h-60 bg-[#111111] overflow-hidden relative">
+                        <img src="h5717.png" alt="H5717" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-70"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest block mb-1.5">Construction</span>
+                        <h3 class="text-base font-serif text-[#FFFFFF] mb-2 group-hover:text-[#D4AF37] transition-colors tracking-wide">H5717 – 2 Kanal Estate</h3>
+                        <p class="text-[11px] text-stone-500 font-medium mb-3"><i class="fa-solid fa-location-dot mr-1 text-[#D4AF37]"></i> Rawalpindi, Punjab</p>
+                        <p class="text-stone-400 text-xs leading-relaxed font-light">Heavy structural foundations layout tracking robust security mapping parameters efficiently.</p>
+                    </div>
+                </div>
+
+                <div class="project-card bg-[#1E1E1E] border border-stone-900 rounded overflow-hidden group hover:border-stone-800 transition duration-300" data-category="construction">
+                    <div class="h-60 bg-[#111111] overflow-hidden relative">
+                        <img src="h5718.png" alt="H5718" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-70"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest block mb-1.5">Construction</span>
+                        <h3 class="text-base font-serif text-[#FFFFFF] mb-2 group-hover:text-[#D4AF37] transition-colors tracking-wide">H5718 – Al Hamra House</h3>
+                        <p class="text-[11px] text-stone-500 font-medium mb-3"><i class="fa-solid fa-location-dot mr-1 text-[#D4AF37]"></i> Hyderabad, Sindh</p>
+                        <p class="text-stone-400 text-xs leading-relaxed font-light">Grey structure masonry monitoring strict moisture insulation parameters pre-finish lines.</p>
+                    </div>
+                </div>
+
+                <div class="project-card bg-[#1E1E1E] border border-stone-900 rounded overflow-hidden group hover:border-stone-800 transition duration-300" data-category="construction">
+                    <div class="h-60 bg-[#111111] overflow-hidden relative">
+                        <img src="h5719.png" alt="H5719" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-70"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest block mb-1.5">Construction</span>
+                        <h3 class="text-base font-serif text-[#FFFFFF] mb-2 group-hover:text-[#D4AF37] transition-colors tracking-wide">H5719 – Green City Estate</h3>
+                        <p class="text-[11px] text-stone-500 font-medium mb-3"><i class="fa-solid fa-location-dot mr-1 text-[#D4AF37]"></i> Abbottabad, KPK</p>
+                        <p class="text-stone-400 text-xs leading-relaxed font-light">Premium layout tracking durable structural columns tailored flawlessly along sloped typography layouts.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="why-choose-us" class="py-28 bg-[#111111] border-t border-stone-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="text-3xl font-serif tracking-wide text-[#FFFFFF] sm:text-4xl">Our Core Distinctions</h2>
+                <div class="w-16 h-[1px] bg-[#D4AF37] mx-auto mt-5"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-[#1E1E1E] rounded overflow-hidden border border-stone-900 flex flex-col sm:flex-row group hover:border-stone-800 transition">
+                    <div class="sm:w-48 h-48 bg-[#111111] shrink-0 overflow-hidden">
+                        <img src="team.png" alt="Professional Team" class="w-full h-full object-cover filter brightness-[0.85] group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-8 flex flex-col justify-center">
+                        <h3 class="text-base font-serif text-[#FFFFFF] mb-2 tracking-wide">Vetted Specialists Team</h3>
+                        <p class="text-stone-400 text-xs leading-relaxed font-light">Collaborative integration of certified structural planners, visionary engineers, and space draftsmen focused entirely on structural integrity.</p>
+                    </div>
+                </div>
+
+                <div class="bg-[#1E1E1E] rounded overflow-hidden border border-stone-900 flex flex-col sm:flex-row group hover:border-stone-800 transition">
+                    <div class="sm:w-48 h-48 bg-[#111111] shrink-0 overflow-hidden">
+                        <img src="qualityconstruction.png" alt="Quality Construction" class="w-full h-full object-cover filter brightness-[0.85] group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-8 flex flex-col justify-center">
+                        <h3 class="text-base font-serif text-[#FFFFFF] mb-2 tracking-wide">Immaculate Structural Quality</h3>
+                        <p class="text-stone-400 text-xs leading-relaxed font-light">Strict adherence to international materials testing standards ensuring zero structural integrity deficiencies across multi-generational lifespans.</p>
+                    </div>
+                </div>
+
+                <div class="bg-[#1E1E1E] rounded overflow-hidden border border-stone-900 flex flex-col sm:flex-row group hover:border-stone-800 transition">
+                    <div class="sm:w-48 h-48 bg-[#111111] shrink-0 overflow-hidden">
+                        <img src="on time delivery.png" alt="On-Time Delivery" class="w-full h-full object-cover filter brightness-[0.85] group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-8 flex flex-col justify-center">
+                        <h3 class="text-base font-serif text-[#FFFFFF] mb-2 tracking-wide">Rigid Delivery Milestones</h3>
+                        <p class="text-stone-400 text-xs leading-relaxed font-light">Advanced structural operational gantt matrix scheduling preventing project lag factors and securing delivery alignments strictly on target bounds.</p>
+                    </div>
+                </div>
+
+                <div class="bg-[#1E1E1E] rounded overflow-hidden border border-stone-900 flex flex-col sm:flex-row group hover:border-stone-800 transition">
+                    <div class="sm:w-48 h-48 bg-[#111111] shrink-0 overflow-hidden">
+                        <img src="modern design.png" alt="Modern Designs" class="w-full h-full object-cover filter brightness-[0.85] group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-8 flex flex-col justify-center">
+                        <h3 class="text-base font-serif text-[#FFFFFF] mb-2 tracking-wide">Avant-Garde Architecture</h3>
+                        <p class="text-stone-400 text-xs leading-relaxed font-light">Pioneering architectural configurations framing pristine luxury elements while matching precise spatial requirements flawlessly.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="process" class="py-20 bg-white">
+    <section id="process" class="py-24 bg-[#111111]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">Our Working Process</h2>
-                <div class="w-16 h-1 bg-amber-600 mx-auto mt-4"></div>
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="text-3xl font-serif tracking-wide text-[#FFFFFF] sm:text-4xl">The Structural Path</h2>
+                <div class="w-16 h-[1px] bg-[#D4AF37] mx-auto mt-5"></div>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-                <div class="bg-gray-50 border border-gray-100 rounded-xl p-5 text-center shadow-sm">
-                    <div class="w-full h-32 bg-gray-200 rounded-lg overflow-hidden mb-4"><img src="Consultation.png" alt="Consultation" class="w-full h-full object-cover"></div>
-                    <span class="text-xs font-bold bg-amber-100 text-amber-700 px-2.5 py-1 rounded-full uppercase tracking-wider block w-max mx-auto mb-3">01. Consult</span>
-                    <h3 class="font-bold text-gray-900 mb-2 text-sm">Consultation</h3>
-                    <p class="text-gray-600 text-xs leading-relaxed">We discuss your ideas, requirements, and budget to understand the project scope. Our team provides expert guidance to help bring your vision to life.</p>
+                <div class="bg-[#1E1E1E] border border-stone-900 rounded p-6 text-center group hover:border-stone-800 transition">
+                    <div class="w-full h-32 bg-[#111111] rounded overflow-hidden mb-5"><img src="Consultation.png" alt="Consultation" class="w-full h-full object-cover filter brightness-90 group-hover:scale-105 transition duration-300"></div>
+                    <span class="text-[9px] font-bold bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/20 px-3 py-1 rounded uppercase tracking-widest block w-max mx-auto mb-4">Step 01</span>
+                    <h3 class="font-bold text-[#FFFFFF] mb-2 text-sm tracking-wide">Consultation</h3>
+                    <p class="text-stone-400 text-[11px] leading-relaxed font-light">Comprehensive brief analyses identifying zoning configurations and scope parameters.</p>
                 </div>
-                <div class="bg-gray-50 border border-gray-100 rounded-xl p-5 text-center shadow-sm">
-                    <div class="w-full h-32 bg-gray-200 rounded-lg overflow-hidden mb-4"><img src="design.png" alt="Design" class="w-full h-full object-cover"></div>
-                    <span class="text-xs font-bold bg-amber-100 text-amber-700 px-2.5 py-1 rounded-full uppercase tracking-wider block w-max mx-auto mb-3">02. Design</span>
-                    <h3 class="font-bold text-gray-900 mb-2 text-sm">Design</h3>
-                    <p class="text-gray-600 text-xs leading-relaxed">We create innovative and functional designs tailored to your needs. Every detail is carefully planned to ensure beauty, comfort, and efficiency.</p>
+                <div class="bg-[#1E1E1E] border border-stone-900 rounded p-6 text-center group hover:border-stone-800 transition">
+                    <div class="w-full h-32 bg-[#111111] rounded overflow-hidden mb-5"><img src="design.png" alt="Design" class="w-full h-full object-cover filter brightness-90 group-hover:scale-105 transition duration-300"></div>
+                    <span class="text-[9px] font-bold bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/20 px-3 py-1 rounded uppercase tracking-widest block w-max mx-auto mb-4">Step 02</span>
+                    <h3 class="font-bold text-[#FFFFFF] mb-2 text-sm tracking-wide">Design Rendering</h3>
+                    <p class="text-stone-400 text-[11px] leading-relaxed font-light">Drafting dynamic photorealistic visual renders matching V-Ray constraints beautifully.</p>
                 </div>
-                <div class="bg-gray-50 border border-gray-100 rounded-xl p-5 text-center shadow-sm">
-                    <div class="w-full h-32 bg-gray-200 rounded-lg overflow-hidden mb-4"><img src="planing.png" alt="Planning" class="w-full h-full object-cover"></div>
-                    <span class="text-xs font-bold bg-amber-100 text-amber-700 px-2.5 py-1 rounded-full uppercase tracking-wider block w-max mx-auto mb-3">03. Plan</span>
-                    <h3 class="font-bold text-gray-900 mb-2 text-sm">Planning</h3>
-                    <p class="text-gray-600 text-xs leading-relaxed">Detailed drawings, schedules, and project strategies are prepared for smooth execution. Proper planning helps ensure quality and timely completion.</p>
+                <div class="bg-[#1E1E1E] border border-stone-900 rounded p-6 text-center group hover:border-stone-800 transition">
+                    <div class="w-full h-32 bg-[#111111] rounded overflow-hidden mb-5"><img src="planing.png" alt="Planning" class="w-full h-full object-cover filter brightness-90 group-hover:scale-105 transition duration-300"></div>
+                    <span class="text-[9px] font-bold bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/20 px-3 py-1 rounded uppercase tracking-widest block w-max mx-auto mb-4">Step 03</span>
+                    <h3 class="font-bold text-[#FFFFFF] mb-2 text-sm tracking-wide">Engineering Scheme</h3>
+                    <p class="text-stone-400 text-[11px] leading-relaxed font-light">Detailed material bills creation and rigorous structural load calculations mapping.</p>
                 </div>
-                <div class="bg-gray-50 border border-gray-100 rounded-xl p-5 text-center shadow-sm">
-                    <div class="w-full h-32 bg-gray-200 rounded-lg overflow-hidden mb-4"><img src="construction.png" alt="Construction" class="w-full h-full object-cover"></div>
-                    <span class="text-xs font-bold bg-amber-100 text-amber-700 px-2.5 py-1 rounded-full uppercase tracking-wider block w-max mx-auto mb-3">04. Build</span>
-                    <h3 class="font-bold text-gray-900 mb-2 text-sm">Construction</h3>
-                    <p class="text-gray-600 text-xs leading-relaxed">Our skilled team builds your project with precision, quality materials, and professional workmanship. We maintain high standards throughout every stage.</p>
+                <div class="bg-[#1E1E1E] border border-stone-900 rounded p-6 text-center group hover:border-stone-800 transition">
+                    <div class="w-full h-32 bg-[#111111] rounded overflow-hidden mb-5"><img src="construction.png" alt="Construction" class="w-full h-full object-cover filter brightness-90 group-hover:scale-105 transition duration-300"></div>
+                    <span class="text-[9px] font-bold bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/20 px-3 py-1 rounded uppercase tracking-widest block w-max mx-auto mb-4">Step 04</span>
+                    <h3 class="font-bold text-[#FFFFFF] mb-2 text-sm tracking-wide">Physical Execution</h3>
+                    <p class="text-stone-400 text-[11px] leading-relaxed font-light">Elite masonry supervision tracking high structural accuracy limits closely.</p>
                 </div>
-                <div class="bg-gray-50 border border-gray-100 rounded-xl p-5 text-center shadow-sm">
-                    <div class="w-full h-32 bg-gray-200 rounded-lg overflow-hidden mb-4"><img src="handover.png" alt="Handover" class="w-full h-full object-cover"></div>
-                    <span class="text-xs font-bold bg-amber-100 text-amber-700 px-2.5 py-1 rounded-full uppercase tracking-wider block w-max mx-auto mb-3">05. Handover</span>
-                    <h3 class="font-bold text-gray-900 mb-2 text-sm">Handover</h3>
-                    <p class="text-gray-600 text-xs leading-relaxed">After final inspections and quality checks, the completed project is delivered to you. We ensure everything is ready for immediate use and satisfaction.</p>
+                <div class="bg-[#1E1E1E] border border-stone-900 rounded p-6 text-center group hover:border-stone-800 transition">
+                    <div class="w-full h-32 bg-[#111111] rounded overflow-hidden mb-5"><img src="handover.png" alt="Handover" class="w-full h-full object-cover filter brightness-90 group-hover:scale-105 transition duration-300"></div>
+                    <span class="text-[9px] font-bold bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/20 px-3 py-1 rounded uppercase tracking-widest block w-max mx-auto mb-4">Step 05</span>
+                    <h3 class="font-bold text-[#FFFFFF] mb-2 text-sm tracking-wide">Pristine Handover</h3>
+                    <p class="text-stone-400 text-[11px] leading-relaxed font-light">Complete quality audits processing pre-handover turn-key structural certifications.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="team" class="py-20 bg-gray-50">
+    <section id="team" class="py-24 bg-[#111111] border-t border-stone-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">Our Professional Experts</h2>
-                <div class="w-16 h-1 bg-amber-600 mx-auto mt-4"></div>
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="text-3xl font-serif tracking-wide text-[#FFFFFF] sm:text-4xl">The Structural Roster</h2>
+                <div class="w-16 h-[1px] bg-[#D4AF37] mx-auto mt-5"></div>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-                <div class="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm text-center p-4">
-                    <div class="w-full h-56 bg-gray-100 rounded-lg overflow-hidden mb-4"><img src="female.png" alt="Hareem lutfi" class="w-full h-full object-cover"></div>
-                    <h3 class="text-base font-bold text-gray-900">Hareem Lutfi</h3>
-                    <p class="text-xs text-amber-600 font-medium mb-3">Architect</p>
-                    <p class="text-[11px] text-gray-500 leading-normal">Bachelor in Architecture • 4 Years Experience<br><span class="text-gray-400">Location: Kot Ghulam Muhammad</span></p>
+                <div class="bg-[#1E1E1E] rounded overflow-hidden border border-stone-900 p-4 text-center group hover:border-stone-800 transition">
+                    <div class="w-full h-56 bg-[#111111] rounded overflow-hidden mb-4 relative filter sepia-[0.05] hover:sepia-0 transition duration-300"><img src="female.png" alt="Hareem lutfi" class="w-full h-full object-cover"></div>
+                    <h3 class="text-sm font-serif text-[#FFFFFF] tracking-wide">Hareem Lutfi</h3>
+                    <p class="text-[11px] text-[#D4AF37] font-semibold mb-3 tracking-wider uppercase">Architect</p>
+                    <p class="text-[10px] text-stone-500 leading-normal font-medium">B.Arch • 4 Yrs Exp<br><span class="text-stone-600 block mt-1">Kot Ghulam Muhammad</span></p>
                 </div>
-                <div class="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm text-center p-4 ring-2 ring-amber-500/20">
-                    <div class="w-full h-56 bg-gray-100 rounded-lg overflow-hidden mb-4"><img src="ranaumair1.png" alt="Rana Umair Ashraf" class="w-full h-full object-cover"></div>
-                    <h3 class="text-base font-bold text-gray-900">Rana Umair Ashraf</h3>
-                    <p class="text-xs text-amber-600 font-medium mb-3">CEO / Architect</p>
-                    <p class="text-[11px] text-gray-500 leading-normal">CEO Hadi Architect & Builder • 5 Years Experience<br><span class="text-gray-400">Location: Pattoki</span></p>
+                <div class="bg-[#1E1E1E] rounded overflow-hidden border border-[#D4AF37]/40 shadow-xl shadow-[#D4AF37]/5 p-4 text-center group relative">
+                    <div class="w-full h-56 bg-[#111111] rounded overflow-hidden mb-4 relative"><img src="ranaumair1.png" alt="Rana Umair Ashraf" class="w-full h-full object-cover"></div>
+                    <h3 class="text-sm font-serif text-[#FFFFFF] tracking-wide">Rana Umair Ashraf</h3>
+                    <p class="text-[11px] text-[#D4AF37] font-semibold mb-3 tracking-wider uppercase">CEO / Architect</p>
+                    <p class="text-[10px] text-stone-400 leading-normal font-medium">Principal • 5 Yrs Exp<br><span class="text-stone-500 block mt-1">Pattoki HQ</span></p>
                 </div>
-                <div class="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm text-center p-4">
-                    <div class="w-full h-56 bg-gray-100 rounded-lg overflow-hidden mb-4"><img src="ahsankhan.png" alt="Ahsan Kamran" class="w-full h-full object-cover"></div>
-                    <h3 class="text-base font-bold text-gray-900">Ahsan Kamran</h3>
-                    <p class="text-xs text-amber-600 font-medium mb-3">Civil Engineer</p>
-                    <p class="text-[11px] text-gray-500 leading-normal">Associate Civil Engineer • 7 Years Experience<br><span class="text-gray-400">Location: Sargodha</span></p>
+                <div class="bg-[#1E1E1E] rounded overflow-hidden border border-stone-900 p-4 text-center group hover:border-stone-800 transition">
+                    <div class="w-full h-56 bg-[#111111] rounded overflow-hidden mb-4 relative filter sepia-[0.05] hover:sepia-0 transition duration-300"><img src="ahsankhan.png" alt="Ahsan Kamran" class="w-full h-full object-cover"></div>
+                    <h3 class="text-sm font-serif text-[#FFFFFF] tracking-wide">Ahsan Kamran</h3>
+                    <p class="text-[11px] text-[#D4AF37] font-semibold mb-3 tracking-wider uppercase">Civil Engineer</p>
+                    <p class="text-[10px] text-stone-500 leading-normal font-medium">Assoc. CE • 7 Yrs Exp<br><span class="text-stone-600 block mt-1">Sargodha</span></p>
                 </div>
-                <div class="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm text-center p-4">
-                    <div class="w-full h-56 bg-gray-100 rounded-lg overflow-hidden mb-4"><img src="male.png" alt="Saad Abbas" class="w-full h-full object-cover"></div>
-                    <h3 class="text-base font-bold text-gray-900">Saad Abbas</h3>
-                    <p class="text-xs text-amber-600 font-medium mb-3">Town Planner</p>
-                    <p class="text-[11px] text-gray-500 leading-normal">Bachelor in Town Planner • 2 Years Experience<br><span class="text-gray-400">Location: Pattoki</span></p>
+                <div class="bg-[#1E1E1E] rounded overflow-hidden border border-stone-900 p-4 text-center group hover:border-stone-800 transition">
+                    <div class="w-full h-56 bg-[#111111] rounded overflow-hidden mb-4 relative filter sepia-[0.05] hover:sepia-0 transition duration-300"><img src="male.png" alt="Saad Abbas" class="w-full h-full object-cover"></div>
+                    <h3 class="text-sm font-serif text-[#FFFFFF] tracking-wide">Saad Abbas</h3>
+                    <p class="text-[11px] text-[#D4AF37] font-semibold mb-3 tracking-wider uppercase">Town Planner</p>
+                    <p class="text-[10px] text-stone-500 leading-normal font-medium">B.Sc Town Plan • 2 Yrs Exp<br><span class="text-stone-600 block mt-1">Pattoki</span></p>
                 </div>
-                <div class="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm text-center p-4">
-                    <div class="w-full h-56 bg-gray-100 rounded-lg overflow-hidden mb-4"><img src="ranawaseem.jpeg" alt="Rana Waseem Akhtar" class="w-full h-full object-cover"></div>
-                    <h3 class="text-base font-bold text-gray-900">Rana Waseem Akhtar</h3>
-                    <p class="text-xs text-amber-600 font-medium mb-3">Landscaping Specialist</p>
-                    <p class="text-[11px] text-gray-500 leading-normal">CEO Dua Nursery Farm • 10 Years Experience<br><span class="text-gray-400">Location: Pattoki</span></p>
+                <div class="bg-[#1E1E1E] rounded overflow-hidden border border-stone-900 p-4 text-center group hover:border-stone-800 transition">
+                    <div class="w-full h-56 bg-[#111111] rounded overflow-hidden mb-4 relative filter sepia-[0.05] hover:sepia-0 transition duration-300"><img src="ranawaseem.jpeg" alt="Rana Waseem Akhtar" class="w-full h-full object-cover"></div>
+                    <h3 class="text-sm font-serif text-[#FFFFFF] tracking-wide">Rana Waseem</h3>
+                    <p class="text-[11px] text-[#D4AF37] font-semibold mb-3 tracking-wider uppercase">Landscape Specialist</p>
+                    <p class="text-[10px] text-stone-500 leading-normal font-medium">Dua Nursery • 10 Yrs Exp<br><span class="text-stone-600 block mt-1">Pattoki</span></p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-20 bg-white">
+    <section id="contact" class="py-24 bg-[#111111]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">Get In Touch</h2>
-                <div class="w-16 h-1 bg-amber-600 mx-auto mt-4"></div>
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="text-3xl font-serif tracking-wide text-[#FFFFFF] sm:text-4xl">Connect With Us</h2>
+                <div class="w-16 h-[1px] bg-[#D4AF37] mx-auto mt-5"></div>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-                <div class="space-y-4">
-                    <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 flex items-center gap-4">
-                        <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-xl shrink-0"><i class="fa-solid fa-phone"></i></div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+                <div class="space-y-4 flex flex-col justify-between">
+                    <div class="bg-[#1E1E1E] p-6 rounded border border-stone-900 flex items-center gap-4 hover:border-stone-800 transition">
+                        <div class="w-12 h-12 bg-[#D4AF37]/5 text-[#D4AF37] rounded flex items-center justify-center text-lg shrink-0 border border-[#D4AF37]/10"><i class="fa-solid fa-phone"></i></div>
                         <div>
-                            <h4 class="text-sm font-bold text-gray-900 uppercase tracking-wider">Call or WhatsApp</h4>
-                            <p class="text-gray-700 font-medium text-sm mt-0.5">0324 530 1575</p>
+                            <h4 class="text-[10px] font-bold text-stone-500 uppercase tracking-widest">Call or WhatsApp</h4>
+                            <p class="text-[#FFFFFF] font-semibold text-sm mt-0.5">0324 530 1575</p>
                         </div>
                     </div>
-                    <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 flex items-center gap-4">
-                        <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-xl shrink-0"><i class="fa-solid fa-envelope"></i></div>
+                    <div class="bg-[#1E1E1E] p-6 rounded border border-stone-900 flex items-center gap-4 hover:border-stone-800 transition">
+                        <div class="w-12 h-12 bg-[#D4AF37]/5 text-[#D4AF37] rounded flex items-center justify-center text-lg shrink-0 border border-[#D4AF37]/10"><i class="fa-solid fa-envelope"></i></div>
                         <div>
-                            <h4 class="text-sm font-bold text-gray-900 uppercase tracking-wider">Email Address</h4>
-                            <p class="text-gray-700 font-medium text-sm mt-0.5">hadiarchitectbuilder@gmail.com</p>
+                            <h4 class="text-[10px] font-bold text-stone-500 uppercase tracking-widest">Email Routing Address</h4>
+                            <p class="text-[#FFFFFF] font-semibold text-sm mt-0.5 break-all">hadiarchitectbuilder@gmail.com</p>
                         </div>
                     </div>
-                    <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 flex items-center gap-4">
-                        <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-xl shrink-0"><i class="fa-solid fa-location-dot"></i></div>
+                    <div class="bg-[#1E1E1E] p-6 rounded border border-stone-900 flex items-center gap-4 hover:border-stone-800 transition">
+                        <div class="w-12 h-12 bg-[#D4AF37]/5 text-[#D4AF37] rounded flex items-center justify-center text-lg shrink-0 border border-[#D4AF37]/10"><i class="fa-solid fa-location-dot"></i></div>
                         <div>
-                            <h4 class="text-sm font-bold text-gray-900 uppercase tracking-wider">Office Location</h4>
-                            <p class="text-gray-700 font-medium text-sm mt-0.5">Pattoki, Punjab, Pakistan</p>
+                            <h4 class="text-[10px] font-bold text-stone-500 uppercase tracking-widest">Main Operational Office</h4>
+                            <p class="text-[#FFFFFF] font-semibold text-sm mt-0.5">Pattoki, Punjab, Pakistan</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="lg:col-span-2 h-72 lg:h-full min-h-[300px] rounded-xl overflow-hidden border border-gray-200 shadow-inner relative bg-gray-100">
-                    <iframe class="w-full h-full border-0 grayscale hover:grayscale-0 transition dynamic-map" src="https://maps.google.com/maps?q=Pattoki,Punjab,Pakistan&t=&z=13&ie=UTF-8&iwloc=&output=embed" allowfullscreen="" loading="lazy"></iframe>
+                <div class="lg:col-span-2 h-80 lg:h-auto min-h-[350px] rounded overflow-hidden border border-stone-900 shadow-2xl relative bg-[#1E1E1E]">
+                    <iframe class="w-full h-full border-0 filter invert-[0.9] hue-rotate-[180deg] opacity-75 hover:opacity-95 transition duration-300" src="https://maps.google.com/maps?q=Pattoki,Punjab,Pakistan&t=&z=13&ie=UTF-8&iwloc=&output=embed" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="login-section" class="py-12 bg-gray-100 border-t border-gray-200">
-        <div class="max-w-md mx-auto px-4 text-center">
-            <h3 class="text-xl font-bold text-gray-900 mb-4"><i class="fa-solid fa-user-gear mr-2 text-amber-600"></i> Admin Panel Login</h3>
-            
-            <div id="login-form-box">
-                <input type="password" id="admin-password" placeholder="Enter Admin Password" class="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber-500 text-center mb-3">
-                <button onclick="checkAdminLogin()" class="bg-amber-600 text-white px-6 py-2 rounded font-semibold hover:bg-amber-700 transition w-full">Login to Edit</button>
-                <p id="login-error" class="text-red-500 text-xs mt-2 hidden">Invalid Password! Try again.</p>
-            </div>
-
-            <div id="logout-form-box" class="hidden">
-                <p class="text-sm text-green-600 mb-3 font-medium">You are logged in as Admin.</p>
-                <button onclick="adminLogout()" class="bg-gray-800 text-white px-6 py-2 rounded font-semibold hover:bg-gray-900 transition w-full">Logout / Lock Panel</button>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-gray-950 text-white pt-16 pb-8 border-t border-gray-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+    <footer class="bg-[#0A0A0A] text-stone-400 pt-20 pb-10 border-t border-stone-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
             <div>
-                <div class="flex items-center gap-2 mb-4">
-                    <i class="fa-solid fa-compass-drafting text-amber-500 text-2xl"></i>
-                    <span class="text-lg font-bold uppercase tracking-wider">Hadi Architect & Builder</span>
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="w-8 h-8 bg-[#D4AF37]/10 rounded flex items-center justify-center text-[#D4AF37] border border-[#D4AF37]/20">
+                        <i class="fa-solid fa-compass-drafting text-sm"></i>
+                    </div>
+                    <span class="text-base font-serif tracking-wider text-[#FFFFFF] uppercase">Hadi Architect</span>
                 </div>
-                <p class="text-gray-400 text-xs leading-relaxed max-w-sm">Transforming ideas into functional, premium, sustainable spaces under professional Pakistani local architectural benchmarks.</p>
+                <p class="text-stone-500 text-xs leading-relaxed max-w-sm font-light">Transforming complex conceptual blueprints into structural masterpieces across Pakistan under professional architectural standards.</p>
             </div>
             <div>
-                <h4 class="text-amber-500 font-bold uppercase tracking-wider text-xs mb-4">Quick Links</h4>
-                <div class="grid grid-cols-2 gap-2 text-xs text-gray-400">
-                    <a href="#home" class="hover:text-white transition">Home</a>
-                    <a href="#about" class="hover:text-white transition">About Us</a>
-                    <a href="#services" class="hover:text-white transition">Services</a>
-                    <a href="#projects" class="hover:text-white transition">Portfolio</a>
-                    <a href="#why-choose-us" class="hover:text-white transition">Why Us</a>
-                    <a href="#process" class="hover:text-white transition">Our Process</a>
+                <h4 class="text-[#FFFFFF] font-semibold uppercase tracking-widest text-[11px] mb-5">Quick Directories</h4>
+                <div class="grid grid-cols-2 gap-3 text-xs font-light">
+                    <a href="#home" class="hover:text-[#D4AF37] transition">Home Base</a>
+                    <a href="#about" class="hover:text-[#D4AF37] transition">About Studio</a>
+                    <a href="#services" class="hover:text-[#D4AF37] transition">Our Services</a>
+                    <a href="#projects" class="hover:text-[#D4AF37] transition">Portfolio Grid</a>
+                    <a href="#why-choose-us" class="hover:text-[#D4AF37] transition">Our Core Value</a>
+                    <a href="#process" class="hover:text-[#D4AF37] transition">Structural Path</a>
                 </div>
             </div>
             <div>
-                <h4 class="text-amber-500 font-bold uppercase tracking-wider text-xs mb-4">Follow Our Media</h4>
+                <h4 class="text-[#FFFFFF] font-semibold uppercase tracking-widest text-[11px] mb-5">Digital Media</h4>
                 <div class="flex items-center gap-3">
-                    <a href="https://www.facebook.com/share/1EMnAPvCox/?mibextid=wwXIfr" target="_blank" class="w-9 h-9 bg-gray-900 hover:bg-amber-600 text-gray-300 hover:text-white flex items-center justify-center rounded transition text-sm"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="https://www.tiktok.com/@hadiarchitect?_r=1&_t=ZS-974FFJFcTCB" target="_blank" class="w-9 h-9 bg-gray-900 hover:bg-amber-600 text-gray-300 hover:text-white flex items-center justify-center rounded transition text-sm"><i class="fa-brands fa-tiktok"></i></a>
-                    <a href="https://www.instagram.com/hadiarchitectbuilder?igsh=MWV2bGgxbDY5eG54bA%3D%3D&utm_source=qr" target="_blank" class="w-9 h-9 bg-gray-900 hover:bg-amber-600 text-gray-300 hover:text-white flex items-center justify-center rounded transition text-sm"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://youtube.com/@hadiarchitectbuilder?si=m0OUbTgrVG3WM1SM" target="_blank" class="w-9 h-9 bg-gray-900 hover:bg-amber-600 text-gray-300 hover:text-white flex items-center justify-center rounded transition text-sm"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://www.facebook.com/share/1EMnAPvCox/?mibextid=wwXIfr" target="_blank" class="w-10 h-10 bg-[#1E1E1E] border border-stone-900 hover:border-[#D4AF37] hover:text-[#FFFFFF] flex items-center justify-center rounded transition text-sm"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.tiktok.com/@hadiarchitect?_r=1&_t=ZS-974FFJFcTCB" target="_blank" class="w-10 h-10 bg-[#1E1E1E] border border-stone-900 hover:border-[#D4AF37] hover:text-[#FFFFFF] flex items-center justify-center rounded transition text-sm"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="https://www.instagram.com/hadiarchitectbuilder?igsh=MWV2bGgxbDY5eG54bA%3D%3D&utm_source=qr" target="_blank" class="w-10 h-10 bg-[#1E1E1E] border border-stone-900 hover:border-[#D4AF37] hover:text-[#FFFFFF] flex items-center justify-center rounded transition text-sm"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://youtube.com/@hadiarchitectbuilder?si=m0OUbTgrVG3WM1SM" target="_blank" class="w-10 h-10 bg-[#1E1E1E] border border-stone-900 hover:border-[#D4AF37] hover:text-[#FFFFFF] flex items-center justify-center rounded transition text-sm"><i class="fa-brands fa-youtube"></i></a>
                 </div>
             </div>
         </div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-gray-900 pt-8 text-center text-xs text-gray-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-stone-900/60 pt-8 text-center text-[11px] text-stone-600 flex flex-col sm:flex-row items-center justify-between gap-4">
             <p>© 2026 Hadi Architect & Builder. All Rights Reserved.</p>
-            <p>Version: v1.1 | Last Updated: June 14, 2026.</p>
+            <p class="tracking-widest uppercase text-[9px]">Engine Version: Premium Gold Minimalism | Updated: June 2026</p>
         </div>
     </footer>
 
-    <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
-        <a href="https://wa.me/923245301575" target="_blank" class="w-14 h-14 bg-green-500 hover:bg-green-600 text-white rounded-full flex items-center justify-center shadow-2xl transition hover:scale-105 relative group" title="Chat on WhatsApp">
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3 select-none">
+        <a href="https://wa.me/923245301575" target="_blank" class="w-14 h-14 bg-emerald-500 hover:bg-emerald-400 text-slate-950 rounded-xl flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-105 group" title="Secure WhatsApp Connect">
             <i class="fa-brands fa-whatsapp text-3xl"></i>
-            <span class="absolute right-16 bg-gray-900 text-white text-xs font-medium px-2.5 py-1.5 rounded shadow whitespace-nowrap opacity-0 group-hover:opacity-100 transition duration-200 pointer-events-none">Chat With Us</span>
+            <span class="absolute right-18 bg-[#1E1E1E] text-stone-200 text-xs font-medium px-3 py-2 rounded shadow-2xl border border-stone-800 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none tracking-wide">Connect Instant</span>
         </a>
 
-        <a href="elevation.html" class="bg-amber-600 hover:bg-amber-700 text-white font-semibold text-xs px-4 py-3 rounded-full flex items-center gap-2 shadow-2xl transition hover:scale-105 group" title="View Elevation Designs">
-            <i class="fa-solid fa-building text-sm"></i>
+        <a href="elevation.html" class="animate-float px-5 h-12 bg-[#1E1E1E] border border-[#D4AF37]/50 hover:border-[#D4AF37] text-[#D4AF37] hover:text-black hover:bg-[#D4AF37] rounded-xl flex items-center justify-center gap-2.5 shadow-2xl transition-all duration-300 shadow-black/80 font-bold text-xs tracking-wider uppercase group" title="Explore Elevation Designs">
+            <i class="fa-solid fa-house-chimney text-sm transition-transform group-hover:scale-110"></i>
             <span>Elevation Design</span>
         </a>
     </div>
 
     <script>
-        // Initial Default Projects Schema
-        const initialProjects = [
-            { id: 1, category: "residential", img: "h5699.png", title: "H5699 – Modern Family Residence", client: "Ahmed Raza", location: "Lahore, Punjab", desc: "A modern double-story residence designed for a growing family. Features spacious living areas, natural lighting, and contemporary architecture." },
-            { id: 2, category: "residential", img: "h5700.png", title: "H5700 – Green Valley House", client: "Muhammad Bilal", location: "Islamabad", desc: "A luxury residential home with energy-efficient planning and premium finishes. Designed to maximize comfort and functionality." },
-            { id: 3, category: "residential", img: "h5701.png", title: "H5701 – Al Noor Villa", client: "Usman Tariq", location: "Faisalabad, Punjab", desc: "Elegant villa featuring modern elevations and open interior spaces. Includes landscaped outdoor areas and covered parking." },
-            { id: 4, category: "residential", img: "h5702.png", title: "H5702 – Royal Heights Residence", client: "Ali Hassan", location: "Multan, Punjab", desc: "A custom-designed family home with a blend of traditional and modern architectural elements. Built for durability and style." },
-            { id: 5, category: "residential", img: "h5703.png", title: "H5703 – Bahria Dream House", client: "Hamza Siddique", location: "Rawalpindi, Punjab", desc: "Contemporary residential project focused on luxury living and smart space utilization. Includes modern façade treatments and premium materials." },
-            { id: 6, category: "residential", img: "h5704.png", title: "H5704 – Garden View Residence", client: "Imran Bashir", location: "Sialkot, Punjab", desc: "Designed around green spaces and natural ventilation. The project offers a peaceful environment with modern living standards." },
-            { id: 7, category: "commercial", img: "h5705.png", title: "H5705 – Al Rehman Business Center", client: "Faisal Mehmood", location: "Gujranwala, Punjab", desc: "Multi-story commercial building designed for offices and retail spaces. Features modern glass elevations and efficient circulation." },
-            { id: 8, category: "commercial", img: "h5706.png", title: "H5706 – Pak Trade Plaza", client: "Kashif Malik", location: "Karachi, Sindh", desc: "Commercial plaza with spacious shops and office units. Designed to support high customer traffic and business growth." },
-            { id: 9, category: "commercial", img: "h5707.png", title: "H5707 – City Square Mall", client: "Shahid Iqbal", location: "Peshawar, KPK", desc: "Modern shopping complex with attractive architecture and functional layouts. Built to enhance the retail experience." },
-            { id: 10, category: "interior", img: "h5720.png", title: "H5720 – Luxury Master Bedroom", client: "Kamran Mughal", location: "Lahore, Punjab", desc: "A modern master bedroom design featuring premium wall paneling, customized ambient lighting, and optimized space planning." },
-            { id: 11, category: "interior", img: "h5721.png", title: "H5721 – Corporate Office Interior", client: "Zafar Corporate Group", location: "Islamabad", desc: "Professional and sleek workspace environment designed with functional workstations, conference setups, and modern themes." },
-            { id: 12, category: "interior", img: "h5722.png", title: "H5722 – High-End Modular Kitchen", client: "Mrs. Sajid", location: "Faisalabad, Punjab", desc: "Smart modular kitchen design focusing on ergonomics, customized storage cabinets, premium countertops, and sleek fittings." },
-            { id: 13, category: "interior", img: "h5723.png", title: "H5723 – Contemporary TV Lounge", client: "Bilal Yousaf", location: "Multan, Punjab", desc: "A warm and spacious family TV lounge area showcasing a bespoke media wall design, fall ceiling textures, and comfortable seating layouts." },
-            { id: 14, category: "interior", img: "h5724.png", title: "H5724 – Brand Boutique Retail Shop", client: "Trendz Studio", location: "Lahore, Punjab", desc: "An interactive commercial retail store interior designed to enhance product visibility with tailored display racks and thematic lighting." },
-            { id: 15, category: "interior", img: "h5725.png", title: "H5725 – Kids Deluxe Bedroom", client: "Dr. Asim Malik", location: "Rawalpindi, Punjab", desc: "Creative and vibrant bedroom layout tailored for children, combining smart studying desks, wall murals, and compact storage options." },
-            { id: 16, category: "landscape", img: "h5708.png", title: "H5708 – Gulshan Garden Development", client: "Abdul Rehman", location: "Lahore, Punjab", desc: "Complete landscape design including lawns, pathways, and decorative plants. Created to provide a relaxing outdoor environment." },
-            { id: 17, category: "landscape", img: "h5709.png", title: "H5709 – Green Park Renovation", client: "Saad Ahmed", location: "Islamabad", desc: "Public landscape project featuring modern seating areas and green zones. Designed to improve community engagement and aesthetics." },
-            { id: 18, category: "landscape", img: "h5710.png", title: "H5710 – Royal Lawn Design", client: "Zain Ali", location: "Bahawalpur, Punjab", desc: "Premium landscape project with water features and customized planting schemes. Focused on beauty, sustainability, and comfort." },
-            { id: 19, category: "before-after", img: "h5711.png", title: "H5711 – House Renovation Transformation", client: "Ahsan Rauf", location: "Lahore, Punjab", desc: "An outdated residence transformed into a modern family home. The renovation improved both aesthetics and functionality." },
-            { id: 20, category: "before-after", img: "h5712.png", title: "H5712 – Commercial Façade Upgrade", client: "Noman Akhtar", location: "Faisalabad, Punjab", desc: "Complete exterior renovation of a commercial property. The new façade significantly enhanced the building’s visual appeal." },
-            { id: 21, category: "before-after", img: "h5713.png", title: "H5713 – Landscape Makeover Project", client: "Waqas Ali", location: "Multan, Punjab", desc: "A neglected outdoor area converted into a vibrant landscaped garden. Features new planting, lighting, and recreational spaces." },
-            { id: 22, category: "construction", img: "h5714.png", title: "H5714 – Al Madina Homes", client: "Muhammad Asif", location: "Sheikhupura, Punjab", desc: "Full construction of a modern residential building from foundation to completion. Executed with strict quality control standards." },
-            { id: 23, category: "construction", img: "h5715.png", title: "H5715 – Faisal Commercial Complex", client: "Rizwan Akram", location: "Gujrat, Punjab", desc: "Large-scale commercial construction project with retail and office facilities. Completed within the planned schedule." },
-            { id: 24, category: "construction", img: "h5716.png", title: "H5716 – Noor Residency", client: "Hafiz Salman", location: "Sargodha, Punjab", desc: "Residential construction project focused on durability and modern living. Built using high-quality materials and craftsmanship." },
-            { id: 25, category: "construction", img: "h5717.png", title: "H5717 – 2 Kanal House", client: "Tariq Mahmood", location: "Rawalpindi, Punjab", desc: "Multi-unit residential apartment project featuring modern amenities. Designed for comfort and efficient use of space." },
-            { id: 26, category: "construction", img: "h5718.png", title: "H5718 – Al Hamra House ", client: "Junaid Ahmad", location: "Hyderabad, Sindh", desc: "Commercial construction project with contemporary architecture and ample retail space. Developed to support local businesses." },
-            { id: 27, category: "construction", img: "h5719.png", title: "H5719 – Green City Residence", client: "Danish Iqbal", location: "Abbottabad, KPK", desc: "Custom-built family residence with modern construction techniques and elegant finishes. Designed for long-term value and comfort." }
-        ];
-
-        let isAdminLoggedIn = false;
-        let currentEditingProjectId = null;
-        let projectsData = JSON.parse(localStorage.getItem('hadi_projects_data')) || initialProjects;
-
-        // Render Projects Engine Function
-        function renderProjectsGrid() {
-            const grid = document.getElementById('project-grid');
-            grid.innerHTML = '';
-
-            projectsData.forEach(proj => {
-                const card = document.createElement('div');
-                card.className = "project-card bg-gray-50 border border-gray-100 rounded-xl overflow-hidden shadow-sm relative";
-                card.setAttribute('data-category', proj.category);
-
-                // Setup upload & text edit buttons if logged in
-                const adminControls = isAdminLoggedIn ? `
-                    <div class="absolute top-3 right-3 flex flex-col gap-2 z-20">
-                        <button onclick="triggerImageUpload(${proj.id})" class="bg-amber-600 text-white text-xs font-bold px-3 py-1.5 rounded shadow hover:bg-amber-700 transition">
-                            <i class="fa-solid fa-upload mr-1"></i> Upload Image
-                        </button>
-                        <button onclick="editProjectTexts(${proj.id})" class="bg-gray-800 text-white text-xs font-bold px-3 py-1.5 rounded shadow hover:bg-gray-900 transition">
-                            <i class="fa-solid fa-pen mr-1"></i> Edit Details
-                        </button>
-                    </div>
-                ` : '';
-
-                card.innerHTML = `
-                    ${adminControls}
-                    <div class="h-56 bg-gray-200 relative">
-                        <img src="${proj.img}" alt="${proj.title}" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <span class="text-xs font-bold text-amber-600 uppercase tracking-wider block mb-1">${proj.category}</span>
-                        <h3 class="text-lg font-bold text-gray-950 mb-2">${proj.title}</h3>
-                        <p class="text-xs text-gray-500 font-medium mb-3">Client: ${proj.client} • Location: ${proj.location}</p>
-                        <p class="text-gray-600 text-xs leading-relaxed">${proj.desc}</p>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        // Trigger Hidden Input File Browser
-        function triggerImageUpload(id) {
-            currentEditingProjectId = id;
-            document.getElementById('admin-file-input').click();
-        }
-
-        // Handle Selected File, Convert to Base64 and Save
-        function handleImageUpload(event) {
-            const file = event.target.files[0];
-            if (!file || currentEditingProjectId === null) return;
-
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const base64Image = e.target.result;
-                
-                // Find and update project image source string
-                const project = projectsData.find(p => p.id === currentEditingProjectId);
-                if (project) {
-                    project.img = base64Image;
-                    
-                    // Save to local storage
-                    localStorage.setItem('hadi_projects_data', JSON.stringify(projectsData));
-                    
-                    // Re-render
-                    renderProjectsGrid();
-                    alert("Image uploaded successfully!");
-                }
-                // Reset states
-                currentEditingProjectId = null;
-                document.getElementById('admin-file-input').value = '';
-            };
-            reader.readAsDataURL(file);
-        }
-
-        // Edit Title, Client, Location, and Description
-        function editProjectTexts(id) {
-            const project = projectsData.find(p => p.id === id);
-            if (!project) return;
-
-            const newTitle = prompt("Enter new Project Title:", project.title);
-            if (newTitle === null) return;
-
-            const newClient = prompt("Enter Client Name:", project.client);
-            if (newClient === null) return;
-
-            const newLocation = prompt("Enter Location:", project.location);
-            if (newLocation === null) return;
-
-            const newDesc = prompt("Enter Project Description:", project.desc);
-            if (newDesc === null) return;
-
-            project.title = newTitle;
-            project.client = newClient;
-            project.location = newLocation;
-            project.desc = newDesc;
-
-            localStorage.setItem('hadi_projects_data', JSON.stringify(projectsData));
-            renderProjectsGrid();
-        }
-
-        // Authentication Controls
-        function checkAdminLogin() {
-            const passInput = document.getElementById('admin-password');
-            const errorText = document.getElementById('login-error');
-            
-            if (passInput.value === "R@n@1234") {
-                isAdminLoggedIn = true;
-                errorText.classList.add('hidden');
-                passInput.value = '';
-                
-                document.getElementById('login-form-box').classList.add('hidden');
-                document.getElementById('logout-form-box').classList.remove('hidden');
-                document.getElementById('admin-indicator').classList.remove('hidden');
-                
-                renderProjectsGrid();
-            } else {
-                errorText.classList.remove('hidden');
-            }
-        }
-
-        function adminLogout() {
-            isAdminLoggedIn = false;
-            document.getElementById('login-form-box').classList.remove('hidden');
-            document.getElementById('logout-form-box').classList.add('hidden');
-            document.getElementById('admin-indicator').classList.add('hidden');
-            renderProjectsGrid();
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            renderProjectsGrid();
-        });
-
-        // Hero Slideshow Loop
+        // Hero Crossfade Slider Controller Block
         let currentSlideIndex = 0;
         const slides = document.querySelectorAll('.slide');
+        
         function showNextSlide() {
             slides[currentSlideIndex].classList.remove('active');
             currentSlideIndex = (currentSlideIndex + 1) % slides.length;
             slides[currentSlideIndex].classList.add('active');
         }
-        setInterval(showNextSlide, 4500);
+        setInterval(showNextSlide, 5000);
 
-        // Mobile Menu Navigation Toggle
+        // Responsive Navigation Control Menu Toggle
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             const icon = document.getElementById('menu-icon');
@@ -625,21 +821,19 @@
             }
         }
 
-        // Project Categories Filter Logic Block Engine
+        // Modular Grid Categorization Filtering Engine
         function filterProjects(category) {
             const cards = document.querySelectorAll('.project-card');
             const buttons = document.querySelectorAll('.project-btn');
             
-            // Adjust Active Styling on Filter Trigger Button Targets
             buttons.forEach(btn => {
                 if(btn.getAttribute('onclick').includes(`'${category}'`)) {
-                    btn.className = "project-btn px-5 py-2.5 rounded text-sm font-semibold bg-amber-600 text-white shadow transition";
+                    btn.className = "project-btn px-5 py-2.5 rounded text-xs font-semibold tracking-widest uppercase bg-[#D4AF37] text-black shadow-md transition-all";
                 } else {
-                    btn.className = "project-btn px-5 py-2.5 rounded text-sm font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200 transition";
+                    btn.className = "project-btn px-5 py-2.5 rounded text-xs font-semibold tracking-widest uppercase bg-[#1E1E1E] text-stone-400 border border-stone-900 hover:text-[#FFFFFF] hover:border-stone-700 transition-all";
                 }
             });
 
-            // Handle Card Element Visibility Transitions Smoothly
             cards.forEach(card => {
                 if(category === 'all' || card.getAttribute('data-category') === category) {
                     card.style.display = 'block';
