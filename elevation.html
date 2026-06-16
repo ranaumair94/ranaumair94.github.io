@@ -3,392 +3,560 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elevation Designs - Hadi Architect & Builder</title>
+    <title>Modern Front Elevations Portfolio - Hadi Architect & Builder</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .design-card img { transition: transform 0.5s ease; }
-        .design-card:hover img { transform: scale(1.06); }
-        .sticky-tabs { position: sticky; top: 5rem; z-index: 40; }
+        /* Custom styles matching your precise branding hexadecimal codes */
+        .bg-brand-dark { background-color: #111111; }
+        .bg-brand-surface { background-color: #1E1E1E; }
+        .text-brand-gold { color: #D4AF37; }
+        .bg-brand-gold { background-color: #D4AF37; }
+        .border-brand-gold { border-color: #D4AF37; }
+        
+        .hover\:text-brand-gold:hover { color: #D4AF37; }
+        .hover\:bg-brand-gold:hover { background-color: #D4AF37; }
+        .hover\:border-brand-gold:hover { border-color: #D4AF37; }
+
+        @keyframes pulse-gold {
+            0%, 100% { opacity: 0.6; transform: scale(0.98); }
+            50% { opacity: 1; transform: scale(1.02); }
+        }
+        .animate-pulse-gold {
+            animation: pulse-gold 2s infinite ease-in-out;
+        }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+<body class="bg-brand-dark text-white font-sans antialiased">
 
-    <header class="sticky top-0 z-50 bg-white shadow-md">
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 bg-brand-surface border-b border-zinc-800 shadow-xl">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <div class="flex items-center gap-2">
-                <i class="fa-solid fa-compass-drafting text-amber-600 text-3xl"></i>
+                <i class="fa-solid fa-compass-drafting text-brand-gold text-3xl"></i>
                 <div>
-                    <span class="text-xl font-bold tracking-tight text-gray-900 block leading-tight">HADI</span>
-                    <span class="text-xs tracking-widest text-amber-600 uppercase font-semibold block">Architect & Builder</span>
+                    <span class="text-xl font-bold tracking-tight text-white block leading-tight">HADI</span>
+                    <span class="text-xs tracking-widest text-brand-gold uppercase font-semibold block">Architect & Builder</span>
                 </div>
             </div>
             <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
-                <a href="index.html#home" class="hover:text-amber-600 transition">Home</a>
-                <a href="index.html#about" class="hover:text-amber-600 transition">About</a>
-                <a href="index.html#services" class="hover:text-amber-600 transition">Services</a>
-                <a href="index.html#projects" class="hover:text-amber-600 transition">Projects</a>
-                <a href="elevation.html" class="text-amber-600 font-semibold border-b-2 border-amber-600 pb-1">Elevation Designs</a>
-                <button onclick="toggleAdminModal()" id="adminNavBtn" class="text-gray-600 hover:text-amber-600 transition cursor-pointer"><i class="fa-solid fa-lock mr-1"></i> Admin Login</button>
+                <a href="index.html#home" class="text-zinc-400 hover:text-brand-gold transition">Home</a>
+                <a href="index.html#about" class="text-zinc-400 hover:text-brand-gold transition">About</a>
+                <a href="index.html#services" class="text-zinc-400 hover:text-brand-gold transition">Services</a>
+                <a href="#portfolio-nav" class="text-brand-gold font-semibold transition">Elevations Portfolio</a>
+                <a href="index.html#contact" class="bg-brand-gold text-black font-bold px-4 py-2 rounded shadow transition hover:bg-white">Get Quote</a>
             </nav>
         </div>
     </header>
 
-    <section class="bg-gray-900 text-white py-16 px-4 text-center relative overflow-hidden">
-        <div class="max-w-4xl mx-auto relative z-10">
-            <span class="text-amber-500 font-semibold tracking-widest uppercase text-xs sm:text-sm block mb-3">Premium Architecture Gallery</span>
-            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4 leading-tight">
-                Our Exclusive <span class="text-amber-500">Elevation Collection</span>
-            </h1>
-            <p class="text-sm sm:text-base text-gray-300 max-w-2xl mx-auto leading-relaxed">
-                Explore premium residential and luxury estate front elevation concepts perfectly optimized for Pakistani modern and classic spaces.
+    <!-- Hero Banner Section -->
+    <section class="bg-[#0b0b0b] text-white py-16 text-center relative overflow-hidden border-b border-zinc-900">
+        <div class="absolute inset-0 opacity-5 bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="relative z-10 max-w-4xl mx-auto px-4">
+            <span class="text-brand-gold font-semibold tracking-widest uppercase text-xs block mb-2">Premium Catalog</span>
+            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4 text-white">Modern Front Elevations</h1>
+            <p class="text-zinc-400 text-sm sm:text-base max-w-2xl mx-auto">
+                Explore our massive static collection of architectural front luxury designs categorized perfectly by plot sizes.
             </p>
         </div>
-        <div class="absolute inset-0 bg-gradient-to-r from-gray-950 to-gray-900 opacity-90"></div>
     </section>
 
-    <div class="sticky-tabs bg-white border-b border-gray-200 shadow-sm py-4">
-        <div class="max-w-7xl mx-auto px-4 flex flex-wrap justify-center gap-2 text-xs sm:text-sm">
-            <a href="#section-3-6m" class="px-4 py-2 bg-amber-50 hover:bg-amber-100 text-amber-800 rounded font-semibold transition"><i class="fa-solid fa-house-user mr-1"></i> 3-6 Marla</a>
-            <a href="#section-7-10m" class="px-4 py-2 bg-amber-50 hover:bg-amber-100 text-amber-800 rounded font-semibold transition"><i class="fa-solid fa-house mr-1"></i> 7-10 Marla</a>
-            <a href="#section-11-15m" class="px-4 py-2 bg-amber-50 hover:bg-amber-100 text-amber-800 rounded font-semibold transition"><i class="fa-solid fa-building-user mr-1"></i> 11-15 Marla</a>
-            <a href="#section-16-20m" class="px-4 py-2 bg-amber-50 hover:bg-amber-100 text-amber-800 rounded font-semibold transition"><i class="fa-solid fa-hotel mr-1"></i> 16-20 Marla</a>
-            <a href="#section-2-6k" class="px-4 py-2 bg-amber-50 hover:bg-amber-100 text-amber-800 rounded font-semibold transition"><i class="fa-solid fa-landmark mr-1"></i> 2-6 Kanal</a>
+    <!-- Sub-Categories Navigation Sticky Bar -->
+    <div id="portfolio-nav" class="sticky top-20 z-40 bg-brand-dark/95 backdrop-blur-md border-b border-zinc-800 py-4 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 flex flex-wrap justify-center gap-2">
+            <a href="#section-3-6-marla" class="px-3 py-1.5 bg-brand-surface text-zinc-300 hover:bg-brand-gold hover:text-black rounded text-xs font-bold transition">3-6 Marla (40)</a>
+            <a href="#section-7-10-marla" class="px-3 py-1.5 bg-brand-surface text-zinc-300 hover:bg-brand-gold hover:text-black rounded text-xs font-bold transition">7-10 Marla</a>
+            <a href="#section-11-15-marla" class="px-3 py-1.5 bg-brand-surface text-zinc-300 hover:bg-brand-gold hover:text-black rounded text-xs font-bold transition">11-15 Marla</a>
+            <a href="#section-16-20-marla" class="px-3 py-1.5 bg-brand-surface text-zinc-300 hover:bg-brand-gold hover:text-black rounded text-xs font-bold transition">16-20 Marla</a>
+            <a href="#section-2-6-kanal" class="px-3 py-1.5 bg-brand-surface text-zinc-300 hover:bg-brand-gold hover:text-black rounded text-xs font-bold transition">2-6 Kanal</a>
         </div>
     </div>
 
-    <div id="adminControlBar" class="hidden bg-amber-600 text-white py-3 px-4 sticky top-36 z-30 shadow-lg border-b border-amber-700">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3">
-            <div class="flex items-center gap-2 font-bold text-sm">
-                <i class="fa-solid fa-user-gear animate-pulse"></i> Admin Mode Active! Click "Edit" to modify, or click image to view fullscreen.
+    <!-- Category: 3-6 Marla -->
+    <section id="section-3-6-marla" class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-36">
+        <div class="border-b border-zinc-800 pb-3 mb-6 flex justify-between items-end">
+            <div>
+                <h2 class="text-xl font-extrabold text-white tracking-tight">3-6 Marla Elevations</h2>
+                <p class="text-xs text-zinc-500">Premium modern designs optimized for compact smart plot sizes.</p>
             </div>
-            <div class="flex gap-2">
-                <button onclick="openUploadModal()" class="bg-white text-amber-700 px-3 py-1.5 rounded text-xs font-bold shadow hover:bg-orange-50 transition cursor-pointer"><i class="fa-solid fa-plus mr-1"></i> Upload New Design</button>
-                <button onclick="adminLogout()" class="bg-red-600 text-white px-3 py-1.5 rounded text-xs font-bold shadow hover:bg-red-700 transition cursor-pointer">Logout</button>
+            <span class="bg-zinc-800 text-brand-gold text-xs font-bold px-2.5 py-1 rounded-full border border-zinc-700">40 Designs</span>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            
+            <!-- ================= 3 MARLA DESIGNS (1 to 10) ================= -->
+            <!-- Card 1 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden">
+                    <img src="3marla1.jpeg" alt="3 Marla Modern Elevation Style #1" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=3+Marla+Design+01'">
+                    <span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded tracking-wide border border-brand-gold/30">HADI-M3-001</span>
+                </div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-sm font-bold text-white leading-snug line-clamp-2 mb-1">3 Marla # 001</h3>
+                        <p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m3-design-001.png</p>
+                    </div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20I%20am%20interested%20in%20Elevation%20ID:%20HADI-M3-001" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800 hover:border-brand-gold"><i class="fa-brands fa-whatsapp mr-1 text-sm text-green-500 group-hover:text-black"></i> Book Design</a>
+                </div>
+            </div>
+            <!-- Repeat Loop for 3 Marla (2 to 10) -->
+            <!-- Card 2 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden">
+                    <img src="3marla2.png" alt="3 Marla Style #2" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=3+Marla+Design+02'">
+                    <span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded tracking-wide border border-brand-gold/30">HADI-M3-002</span>
+                </div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div><h3 class="text-sm font-bold text-white leading-snug mb-1">3 Marla # 002</h3><p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m3-design-002.png</p></div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20ID:%20HADI-M3-002" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800"><i class="fa-brands fa-whatsapp mr-1 text-green-500"></i> Book Design</a>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden"><img src="3marla3.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=3+Marla+Design+03'"><span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-brand-gold/30">HADI-M3-003</span></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div><h3 class="text-sm font-bold text-white leading-snug mb-1">3 Marla # 003</h3><p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m3-design-003.png</p></div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20ID:%20HADI-M3-003" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800"><i class="fa-brands fa-whatsapp mr-1 text-green-500"></i> Book Design</a>
+                </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden"><img src="3marla4.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=3+Marla+Design+04'"><span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-brand-gold/30">HADI-M3-004</span></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div><h3 class="text-sm font-bold text-white leading-snug mb-1">3 Marla # 004</h3><p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m3-design-004.png</p></div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20ID:%20HADI-M3-004" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800"><i class="fa-brands fa-whatsapp mr-1 text-green-500"></i> Book Design</a>
+                </div>
+            </div>
+            <!-- Card 5 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden"><img src="5marla5.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=3+Marla+Design+05'"><span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-brand-gold/30">HADI-M3-005</span></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div><h3 class="text-sm font-bold text-white leading-snug mb-1">3 Marla # 005</h3><p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m3-design-005.png</p></div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20ID:%20HADI-M3-005" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800"><i class="fa-brands fa-whatsapp mr-1 text-green-500"></i> Book Design</a>
+                </div>
+            </div>
+            <!-- Card 6 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden"><img src="3marla6.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=3+Marla+Design+06'"><span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-brand-gold/30">HADI-M3-006</span></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div><h3 class="text-sm font-bold text-white leading-snug mb-1">3 Marla # 006</h3><p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m3-design-006.png</p></div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20ID:%20HADI-M3-006" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800"><i class="fa-brands fa-whatsapp mr-1 text-green-500"></i> Book Design</a>
+                </div>
+            </div>
+            <!-- Card 7 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden"><img src="3marla7.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=3+Marla+Design+07'"><span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-brand-gold/30">HADI-M3-007</span></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div><h3 class="text-sm font-bold text-white leading-snug mb-1">3 Marla # 007</h3><p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m3-design-007.png</p></div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20ID:%20HADI-M3-007" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800"><i class="fa-brands fa-whatsapp mr-1 text-green-500"></i> Book Design</a>
+                </div>
+            </div>
+            <!-- Card 8 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden"><img src="3marla8.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=3+Marla+Design+08'"><span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-brand-gold/30">HADI-M3-008</span></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div><h3 class="text-sm font-bold text-white leading-snug mb-1">3 Marla # 008</h3><p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m3-design-008.png</p></div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20ID:%20HADI-M3-008" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800"><i class="fa-brands fa-whatsapp mr-1 text-green-500"></i> Book Design</a>
+                </div>
+            </div>
+            <!-- Card 9 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden"><img src="3marla9.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=3+Marla+Design+09'"><span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-brand-gold/30">HADI-M3-009</span></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div><h3 class="text-sm font-bold text-white leading-snug mb-1">3 Marla # 009</h3><p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m3-design-009.png</p></div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20ID:%20HADI-M3-009" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800"><i class="fa-brands fa-whatsapp mr-1 text-green-500"></i> Book Design</a>
+                </div>
+            </div>
+            <!-- Card 10 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden"><img src="3marla10.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=3+Marla+Design+10'"><span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-brand-gold/30">HADI-M3-010</span></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div><h3 class="text-sm font-bold text-white leading-snug mb-1">3 Marla # 010</h3><p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m3-design-010.png</p></div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20ID:%20HADI-M3-010" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800"><i class="fa-brands fa-whatsapp mr-1 text-green-500"></i> Book Design</a>
+                </div>
+            </div>
+
+            <!-- ================= 4 MARLA DESIGNS (1 to 10) ================= -->
+            <!-- Card 11 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden"><img src="4marla1.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=4+Marla+Design+01'"><span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-brand-gold/30">HADI-M4-001</span></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div><h3 class="text-sm font-bold text-white leading-snug mb-1">4 Marla # 001</h3><p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m4-design-001.png</p></div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20ID:%20HADI-M4-001" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800"><i class="fa-brands fa-whatsapp mr-1 text-green-500"></i> Book Design</a>
+                </div>
+            </div>
+            <!-- Card 12 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden"><img src="4marla2.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=4+Marla+Design+02'"><span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-brand-gold/30">HADI-M4-002</span></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div><h3 class="text-sm font-bold text-white leading-snug mb-1">4 Marla # 002</h3><p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m4-design-002.png</p></div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20ID:%20HADI-M4-002" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800"><i class="fa-brands fa-whatsapp mr-1 text-green-500"></i> Book Design</a>
+                </div>
+            </div>
+            <!-- Card 13 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden"><img src="4marla3.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=4+Marla+Design+03'"><span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-brand-gold/30">HADI-M4-003</span></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div><h3 class="text-sm font-bold text-white leading-snug mb-1">4 Marla # 003</h3><p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m4-design-003.png</p></div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20ID:%20HADI-M4-003" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800"><i class="fa-brands fa-whatsapp mr-1 text-green-500"></i> Book Design</a>
+                </div>
+            </div>
+            <!-- Card 14 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden"><img src="4marla4.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=4+Marla+Design+04'"><span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-brand-gold/30">HADI-M4-004</span></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div><h3 class="text-sm font-bold text-white leading-snug mb-1">4 Marla # 004</h3><p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m4-design-004.png</p></div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20ID:%20HADI-M4-004" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800"><i class="fa-brands fa-whatsapp mr-1 text-green-500"></i> Book Design</a>
+                </div>
+            </div>
+            <!-- Card 15 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden"><img src="4marla5.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=4+Marla+Design+05'"><span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-brand-gold/30">HADI-M4-005</span></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div><h3 class="text-sm font-bold text-white leading-snug mb-1">4 Marla # 005</h3><p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m4-design-005.png</p></div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20ID:%20HADI-M4-005" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800"><i class="fa-brands fa-whatsapp mr-1 text-green-500"></i> Book Design</a>
+                </div>
+            </div>
+            <!-- Card 16 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden"><img src="4marla6.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=4+Marla+Design+06'"><span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-brand-gold/30">HADI-M4-006</span></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div><h3 class="text-sm font-bold text-white leading-snug mb-1">4 Marla # 006</h3><p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m4-design-006.png</p></div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20ID:%20HADI-M4-006" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800"><i class="fa-brands fa-whatsapp mr-1 text-green-500"></i> Book Design</a>
+                </div>
+            </div>
+            <!-- Card 17 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden"><img src="4marla7.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=4+Marla+Design+07'"><span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-brand-gold/30">HADI-M4-007</span></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div><h3 class="text-sm font-bold text-white leading-snug mb-1">4 Marla # 007</h3><p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m4-design-007.png</p></div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20ID:%20HADI-M4-007" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800"><i class="fa-brands fa-whatsapp mr-1 text-green-500"></i> Book Design</a>
+                </div>
+            </div>
+            <!-- Card 18 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden"><img src="4marla8.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=4+Marla+Design+08'"><span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-brand-gold/30">HADI-M4-008</span></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div><h3 class="text-sm font-bold text-white leading-snug mb-1">4 Marla # 008</h3><p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m4-design-008.png</p></div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20ID:%20HADI-M4-008" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800"><i class="fa-brands fa-whatsapp mr-1 text-green-500"></i> Book Design</a>
+                </div>
+            </div>
+            <!-- Card 19 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden"><img src="4marla9.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=4+Marla+Design+09'"><span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-brand-gold/30">HADI-M4-009</span></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div><h3 class="text-sm font-bold text-white leading-snug mb-1">4 Marla # 009</h3><p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m4-design-009.png</p></div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20ID:%20HADI-M4-009" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800"><i class="fa-brands fa-whatsapp mr-1 text-green-500"></i> Book Design</a>
+                </div>
+            </div>
+            <!-- Card 20 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden"><img src="4marla10.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=4+Marla+Design+10'"><span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-brand-gold/30">HADI-M4-010</span></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div><h3 class="text-sm font-bold text-white leading-snug mb-1">4 Marla # 010</h3><p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m4-design-010.png</p></div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20ID:%20HADI-M4-010" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800"><i class="fa-brands fa-whatsapp mr-1 text-green-500"></i> Book Design</a>
+                </div>
+            </div>
+
+            <!-- ================= 5 MARLA DESIGNS (1 to 10) ================= -->
+            <!-- Card 21 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden"><img src="5marla1.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=5+Marla+Design+01'"><span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-brand-gold/30">HADI-M5-001</span></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div><h3 class="text-sm font-bold text-white leading-snug mb-1">5 Marla # 001</h3><p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m5-design-001.png</p></div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20ID:%20HADI-M5-001" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800"><i class="fa-brands fa-whatsapp mr-1 text-green-500"></i> Book Design</a>
+                </div>
+            </div>
+            <!-- Card 22 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden"><img src="5marla2.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=5+Marla+Design+02'"><span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-brand-gold/30">HADI-M5-002</span></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div><h3 class="text-sm font-bold text-white leading-snug mb-1">5 Marla # 002</h3><p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m5-design-002.png</p></div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20ID:%20HADI-M5-002" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800"><i class="fa-brands fa-whatsapp mr-1 text-green-500"></i> Book Design</a>
+                </div>
+            </div>
+            <!-- Card 23 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden"><img src="5marla3.jpeg" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=5+Marla+Design+03'"><span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-brand-gold/30">HADI-M5-003</span></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div><h3 class="text-sm font-bold text-white leading-snug mb-1">5 Marla # 003</h3><p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m5-design-003.png</p></div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20ID:%20HADI-M5-003" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800"><i class="fa-brands fa-whatsapp mr-1 text-green-500"></i> Book Design</a>
+                </div>
+            </div>
+            <!-- Card 24 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden"><img src="5marla04.jpeg" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=5+Marla+Design+04'"><span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-brand-gold/30">HADI-M5-004</span></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div><h3 class="text-sm font-bold text-white leading-snug mb-1">5 Marla # 004</h3><p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m5-design-004.png</p></div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20ID:%20HADI-M5-004" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800"><i class="fa-brands fa-whatsapp mr-1 text-green-500"></i> Book Design</a>
+                </div>
+            </div>
+            <!-- Card 25 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden"><img src="5marla5.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=5+Marla+Design+05'"><span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-brand-gold/30">HADI-M5-005</span></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div><h3 class="text-sm font-bold text-white leading-snug mb-1">5 Marla # 005</h3><p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m5-design-005.png</p></div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20ID:%20HADI-M5-005" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800"><i class="fa-brands fa-whatsapp mr-1 text-green-500"></i> Book Design</a>
+                </div>
+            </div>
+            <!-- Card 26 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden"><img src="5marla6.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=5+Marla+Design+06'"><span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-brand-gold/30">HADI-M5-006</span></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div><h3 class="text-sm font-bold text-white leading-snug mb-1">5 Marla # 006</h3><p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m5-design-006.png</p></div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20ID:%20HADI-M5-006" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800"><i class="fa-brands fa-whatsapp mr-1 text-green-500"></i> Book Design</a>
+                </div>
+            </div>
+            <!-- Card 27 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden"><img src="5marla7.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=5+Marla+Design+07'"><span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-brand-gold/30">HADI-M5-007</span></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div><h3 class="text-sm font-bold text-white leading-snug mb-1">5 Marla # 007</h3><p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m5-design-007.png</p></div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20ID:%20HADI-M5-007" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800"><i class="fa-brands fa-whatsapp mr-1 text-green-500"></i> Book Design</a>
+                </div>
+            </div>
+            <!-- Card 28 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden"><img src="5marla8.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=5+Marla+Design+08'"><span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-brand-gold/30">HADI-M5-008</span></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div><h3 class="text-sm font-bold text-white leading-snug mb-1">5 Marla # 008</h3><p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m5-design-008.png</p></div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20ID:%20HADI-M5-008" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800"><i class="fa-brands fa-whatsapp mr-1 text-green-500"></i> Book Design</a>
+                </div>
+            </div>
+            <!-- Card 29 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden"><img src="5marla9.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=5+Marla+Design+09'"><span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-brand-gold/30">HADI-M5-009</span></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div><h3 class="text-sm font-bold text-white leading-snug mb-1">5 Marla # 009</h3><p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m5-design-009.png</p></div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20ID:%20HADI-M5-009" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800"><i class="fa-brands fa-whatsapp mr-1 text-green-500"></i> Book Design</a>
+                </div>
+            </div>
+            <!-- Card 30 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden"><img src="5marla10.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=5+Marla+Design+10'"><span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-brand-gold/30">HADI-M5-010</span></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div><h3 class="text-sm font-bold text-white leading-snug mb-1">5 Marla # 010</h3><p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m5-design-010.png</p></div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20ID:%20HADI-M5-010" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800"><i class="fa-brands fa-whatsapp mr-1 text-green-500"></i> Book Design</a>
+                </div>
+            </div>
+
+            <!-- ================= 6 MARLA DESIGNS (1 to 10) ================= -->
+            <!-- Card 31 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden"><img src="6marla1.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=6+Marla+Design+01'"><span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-brand-gold/30">HADI-M6-001</span></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div><h3 class="text-sm font-bold text-white leading-snug mb-1">6 Marla # 001</h3><p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m6-design-001.png</p></div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20ID:%20HADI-M6-001" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800"><i class="fa-brands fa-whatsapp mr-1 text-green-500"></i> Book Design</a>
+                </div>
+            </div>
+            <!-- Card 32 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden"><img src="6marla2.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=6+Marla+Design+02'"><span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-brand-gold/30">HADI-M6-002</span></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div><h3 class="text-sm font-bold text-white leading-snug mb-1">6 Marla # 002</h3><p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m6-design-002.png</p></div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20ID:%20HADI-M6-002" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800"><i class="fa-brands fa-whatsapp mr-1 text-green-500"></i> Book Design</a>
+                </div>
+            </div>
+            <!-- Card 33 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden"><img src="6marla3.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=6+Marla+Design+03'"><span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-brand-gold/30">HADI-M6-003</span></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div><h3 class="text-sm font-bold text-white leading-snug mb-1">6 Marla # 003</h3><p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m6-design-003.png</p></div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20ID:%20HADI-M6-003" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800"><i class="fa-brands fa-whatsapp mr-1 text-green-500"></i> Book Design</a>
+                </div>
+            </div>
+            <!-- Card 34 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden"><img src="6marla4.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=6+Marla+Design+04'"><span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-brand-gold/30">HADI-M6-004</span></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div><h3 class="text-sm font-bold text-white leading-snug mb-1">6 Marla # 004</h3><p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m6-design-004.png</p></div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20ID:%20HADI-M6-004" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800"><i class="fa-brands fa-whatsapp mr-1 text-green-500"></i> Book Design</a>
+                </div>
+            </div>
+            <!-- Card 35 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden"><img src="6marla5.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=6+Marla+Design+05'"><span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-brand-gold/30">HADI-M6-005</span></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div><h3 class="text-sm font-bold text-white leading-snug mb-1">6 Marla # 005</h3><p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m6-design-005.png</p></div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20ID:%20HADI-M6-005" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800"><i class="fa-brands fa-whatsapp mr-1 text-green-500"></i> Book Design</a>
+                </div>
+            </div>
+            <!-- Card 36 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden"><img src="6marla6.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=6+Marla+Design+06'"><span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-brand-gold/30">HADI-M6-006</span></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div><h3 class="text-sm font-bold text-white leading-snug mb-1">6 Marla # 006</h3><p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m6-design-006.png</p></div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20ID:%20HADI-M6-006" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800"><i class="fa-brands fa-whatsapp mr-1 text-green-500"></i> Book Design</a>
+                </div>
+            </div>
+            <!-- Card 37 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden"><img src="6marla7.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=6+Marla+Design+07'"><span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-brand-gold/30">HADI-M6-007</span></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div><h3 class="text-sm font-bold text-white leading-snug mb-1">6 Marla # 007</h3><p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m6-design-007.png</p></div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20ID:%20HADI-M6-007" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800"><i class="fa-brands fa-whatsapp mr-1 text-green-500"></i> Book Design</a>
+                </div>
+            </div>
+            <!-- Card 38 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden"><img src="6marla8.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=6+Marla+Design+08'"><span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-brand-gold/30">HADI-M6-008</span></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div><h3 class="text-sm font-bold text-white leading-snug mb-1">6 Marla # 008</h3><p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m6-design-008.png</p></div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20ID:%20HADI-M6-008" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800"><i class="fa-brands fa-whatsapp mr-1 text-green-500"></i> Book Design</a>
+                </div>
+            </div>
+            <!-- Card 39 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden"><img src="6marla9.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=6+Marla+Design+09'"><span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-brand-gold/30">HADI-M6-009</span></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div><h3 class="text-sm font-bold text-white leading-snug mb-1">6 Marla # 009</h3><p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m6-design-009.png</p></div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20ID:%20HADI-M6-009" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800"><i class="fa-brands fa-whatsapp mr-1 text-green-500"></i> Book Design</a>
+                </div>
+            </div>
+            <!-- Card 40 -->
+            <div class="bg-brand-surface border border-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition flex flex-col group">
+                <div class="h-48 bg-zinc-900 relative overflow-hidden"><img src="6marla10.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 cursor-pointer" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600400?text=6+Marla+Design+10'"><span class="absolute top-2 left-2 bg-brand-dark/90 text-brand-gold font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-brand-gold/30">HADI-M6-010</span></div>
+                <div class="p-4 flex-1 flex flex-col justify-between">
+                    <div><h3 class="text-sm font-bold text-white leading-snug mb-1">6 Marla # 010</h3><p class="text-zinc-500 font-mono text-[11px] mb-3">Pic: m6-design-010.png</p></div>
+                    <a href="https://wa.me/923245301575?text=Salam%20Hadi%20Architect,%20ID:%20HADI-M6-010" target="_blank" class="w-full text-center block bg-zinc-900 hover:bg-brand-gold text-zinc-300 hover:text-black font-semibold py-2 rounded text-xs transition border border-zinc-800"><i class="fa-brands fa-whatsapp mr-1 text-green-500"></i> Book Design</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Category: 7-10 Marla (Loading Section) -->
+    <section id="section-7-10-marla" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-36 bg-brand-surface/40 rounded-xl border border-zinc-900 mb-6">
+        <div class="border-b border-zinc-800 pb-3 mb-10 flex justify-between items-end">
+            <div>
+                <h2 class="text-xl font-extrabold text-white tracking-tight">7-10 Marla Elevations</h2>
+                <p class="text-xs text-zinc-500">Elegant spacious double unit architecture concepts.</p>
             </div>
         </div>
-    </div>
-
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-20">
-        <section id="section-3-6m" class="scroll-mt-32">
-            <div class="flex items-center justify-between border-b border-gray-200 pb-4 mb-8">
-                <h2 class="text-xl sm:text-2xl font-bold text-gray-900 flex items-center gap-2"><i class="fa-solid fa-house-user text-amber-600"></i> 3 - 6 Marla Elevation Designs</h2>
-                <span id="count-3-6m" class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full">0 Concepts</span>
+        <!-- Loading Logo Wrapper -->
+        <div class="flex flex-col items-center justify-center py-12 text-center">
+            <div class="relative flex items-center justify-center mb-4">
+                <i class="fa-solid fa-compass-drafting text-brand-gold text-5xl animate-spin" style="animation-duration: 3s;"></i>
+                <i class="fa-solid fa-circle-notch text-zinc-700 text-7xl absolute animate-spin"></i>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="grid-3-6m"></div>
-        </section>
+            <p class="text-brand-gold font-mono tracking-widest text-xs uppercase font-bold animate-pulse-gold">Loading Designs...</p>
+        </div>
+    </section>
 
-        <section id="section-7-10m" class="scroll-mt-32">
-            <div class="flex items-center justify-between border-b border-gray-200 pb-4 mb-8">
-                <h2 class="text-xl sm:text-2xl font-bold text-gray-900 flex items-center gap-2"><i class="fa-solid fa-house text-amber-600"></i> 7 - 10 Marla Elevation Designs</h2>
-                <span id="count-7-10m" class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full">0 Concepts</span>
+    <!-- Category: 11-15 Marla (Loading Section) -->
+    <section id="section-11-15-marla" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-36 mb-6">
+        <div class="border-b border-zinc-800 pb-3 mb-10 flex justify-between items-end">
+            <div>
+                <h2 class="text-xl font-extrabold text-white tracking-tight">11-15 Marla Elevations</h2>
+                <p class="text-xs text-zinc-500">Luxury executive layouts featuring grand dynamic premium facades.</p>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="grid-7-10m"></div>
-        </section>
-
-        <section id="section-11-15m" class="scroll-mt-32">
-            <div class="flex items-center justify-between border-b border-gray-200 pb-4 mb-8">
-                <h2 class="text-xl sm:text-2xl font-bold text-gray-900 flex items-center gap-2"><i class="fa-solid fa-building-user text-amber-600"></i> 11 - 15 Marla Elevation Designs</h2>
-                <span id="count-11-15m" class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full">0 Concepts</span>
+        </div>
+        <!-- Loading Logo Wrapper -->
+        <div class="flex flex-col items-center justify-center py-12 text-center">
+            <div class="relative flex items-center justify-center mb-4">
+                <i class="fa-solid fa-compass-drafting text-brand-gold text-5xl animate-spin" style="animation-duration: 3s;"></i>
+                <i class="fa-solid fa-circle-notch text-zinc-700 text-7xl absolute animate-spin"></i>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="grid-11-15m"></div>
-        </section>
+            <p class="text-brand-gold font-mono tracking-widest text-xs uppercase font-bold animate-pulse-gold">Loading Designs...</p>
+        </div>
+    </section>
 
-        <section id="section-16-20m" class="scroll-mt-32">
-            <div class="flex items-center justify-between border-b border-gray-200 pb-4 mb-8">
-                <h2 class="text-xl sm:text-2xl font-bold text-gray-900 flex items-center gap-2"><i class="fa-solid fa-hotel text-amber-600"></i> 16 - 20 Marla Elevation Designs</h2>
-                <span id="count-16-20m" class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full">0 Concepts</span>
+    <!-- Category: 16-20 Marla (Loading Section) -->
+    <section id="section-16-20-marla" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-36 bg-brand-surface/40 rounded-xl border border-zinc-900 mb-6">
+        <div class="border-b border-zinc-800 pb-3 mb-10 flex justify-between items-end">
+            <div>
+                <h2 class="text-xl font-extrabold text-white tracking-tight">16-20 Marla Elevations</h2>
+                <p class="text-xs text-zinc-500">High-end luxury mansion layouts for premium double-unit systems.</p>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="grid-16-20m"></div>
-        </section>
-
-        <section id="section-2-6k" class="scroll-mt-32">
-            <div class="flex items-center justify-between border-b border-gray-200 pb-4 mb-8">
-                <h2 class="text-xl sm:text-2xl font-bold text-gray-900 flex items-center gap-2"><i class="fa-solid fa-landmark text-amber-600"></i> 2 - 6 Kanal Luxury Elevations</h2>
-                <span id="count-2-6k" class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full">0 Concepts</span>
+        </div>
+        <!-- Loading Logo Wrapper -->
+        <div class="flex flex-col items-center justify-center py-12 text-center">
+            <div class="relative flex items-center justify-center mb-4">
+                <i class="fa-solid fa-compass-drafting text-brand-gold text-5xl animate-spin" style="animation-duration: 3s;"></i>
+                <i class="fa-solid fa-circle-notch text-zinc-700 text-7xl absolute animate-spin"></i>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="grid-2-6k"></div>
-        </section>
-    </main>
+            <p class="text-brand-gold font-mono tracking-widest text-xs uppercase font-bold animate-pulse-gold">Loading Designs...</p>
+        </div>
+    </section>
 
-    <footer class="bg-gray-950 text-white pt-12 pb-8 border-t border-gray-900 mt-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-            <p class="text-gray-400 font-medium text-sm">Hadi Architect & Builder — Premium Elevation Database Portfolio</p>
-            <p class="text-xs text-gray-500">© 2026 Hadi Architect & Builder. All Rights Reserved.</p>
-            <button onclick="toggleAdminModal()" class="text-[11px] text-gray-700 hover:text-amber-600 block mx-auto underline cursor-pointer">Staff System Login</button>
+    <!-- Category: 2-6 Kanal (Loading Section) -->
+    <section id="section-2-6-kanal" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-36 mb-6">
+        <div class="border-b border-zinc-800 pb-3 mb-10 flex justify-between items-end">
+            <div>
+                <h2 class="text-xl font-extrabold text-white tracking-tight">2-6 Kanal Luxury Palaces</h2>
+                <p class="text-xs text-zinc-500">Elite signature palace structures and mega farmhouse concepts.</p>
+            </div>
+        </div>
+        <!-- Loading Logo Wrapper -->
+        <div class="flex flex-col items-center justify-center py-12 text-center">
+            <div class="relative flex items-center justify-center mb-4">
+                <i class="fa-solid fa-compass-drafting text-brand-gold text-5xl animate-spin" style="animation-duration: 3s;"></i>
+                <i class="fa-solid fa-circle-notch text-zinc-700 text-7xl absolute animate-spin"></i>
+            </div>
+            <p class="text-brand-gold font-mono tracking-widest text-xs uppercase font-bold animate-pulse-gold">Loading Designs...</p>
+        </div>
+    </section>
+
+    <!-- Footer Engine -->
+    <footer class="bg-[#090909] text-zinc-400 pt-12 pb-8 border-t border-zinc-900 mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs">
+            <p class="mb-2 text-zinc-500">© 2026 Hadi Architect & Builder. All Rights Reserved.</p>
+            <p class="text-zinc-600">Pure Static Structural Portfolio Engine</p>
         </div>
     </footer>
 
-    <div id="lightboxModal" class="hidden fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4 backdrop-blur-md select-none">
-        <div class="absolute top-0 left-0 right-0 p-4 bg-gradient-to-b from-black/60 to-transparent flex items-center justify-between z-50">
-            <button onclick="closeLightbox()" class="text-white hover:text-amber-500 text-xl font-bold flex items-center gap-2 px-3 py-2 bg-black/40 rounded-lg cursor-pointer transition">
-                <i class="fa-solid fa-arrow-left"></i> <span>Back to Website</span>
-            </button>
-            <div id="lightboxIdTag" class="text-amber-500 font-mono text-sm font-bold bg-gray-900/80 px-3 py-1 rounded-md border border-gray-800"></div>
-        </div>
-        <img id="lightboxImg" src="" alt="Fullscreen View" class="max-w-full max-h-[85vh] md:max-h-[90vh] object-contain rounded-sm shadow-2xl">
-        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 w-full max-w-md px-4">
-            <div class="bg-gray-900/90 text-white p-4 rounded-xl border border-gray-800/80 text-center shadow-xl backdrop-blur-sm">
-                <h4 id="lightboxTitle" class="text-sm font-bold text-amber-500 mb-1"></h4>
-                <p id="lightboxDetails" class="text-xs text-gray-300"></p>
-            </div>
-        </div>
+    <!-- Fixed Floating WhatsApp Button Container -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <a href="https://wa.me/923245301575" target="_blank" class="w-14 h-14 bg-green-500 hover:bg-green-600 text-white rounded-full flex items-center justify-center shadow-2xl transition hover:scale-105"><i class="fa-brands fa-whatsapp text-3xl"></i></a>
     </div>
 
-    <div id="loginModal" class="hidden fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">
-        <div class="bg-white rounded-xl shadow-2xl p-6 max-w-sm w-full space-y-4 border border-gray-100">
-            <div class="flex justify-between items-center">
-                <h3 class="text-lg font-bold text-gray-900"><i class="fa-solid fa-shield-halved text-amber-600 mr-2"></i>Admin Secure Login</h3>
-                <button onclick="toggleAdminModal()" class="text-gray-400 hover:text-gray-600"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            <div class="space-y-3">
-                <div>
-                    <label class="block text-xs font-semibold text-gray-600 mb-1">Password</label>
-                    <input type="password" id="adminPassword" class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:border-amber-600" placeholder="Enter Admin Password">
-                </div>
-                <p id="loginError" class="text-xs text-red-600 hidden font-medium">Incorrect password.</p>
-                <button onclick="processLogin()" class="w-full bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 rounded transition cursor-pointer">Verify & Unlock</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="editModal" class="hidden fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">
-        <div class="bg-white rounded-xl shadow-2xl p-6 max-w-md w-full space-y-4 max-h-[90vh] overflow-y-auto">
-            <div class="flex justify-between items-center">
-                <h3 id="modalFormTitle" class="text-lg font-bold text-gray-900">Modify Design Entry</h3>
-                <button onclick="closeEditModal()" class="text-gray-400 hover:text-gray-600"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            <input type="hidden" id="formActionType" value="edit">
-            <input type="hidden" id="targetGlobalIndex">
+    <!-- ================= FULLSCREEN LIGHTBOX MODAL ================= -->
+    <div id="lightboxModal" class="fixed inset-0 bg-black/95 z-[100] hidden flex items-center justify-center select-none" onclick="closeLightbox()">
+        <!-- Close Button -->
+        <button class="absolute top-6 right-6 text-white hover:text-brand-gold text-3xl transition z-50 cursor-pointer" onclick="closeLightbox()">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        
+        <!-- Image & Watermark Wrapper -->
+        <div class="relative max-w-[90%] max-h-[90vh] flex items-center justify-center" onclick="event.stopPropagation()">
+            <!-- Fullscreen Image -->
+            <img id="lightboxImg" src="" alt="Hadi Fullscreen Preview" class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl border border-zinc-800">
             
-            <div class="space-y-3 text-xs">
-                <div>
-                    <label class="block font-semibold text-gray-600 mb-1">Category Select</label>
-                    <select id="formCategory" class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:border-amber-600">
-                        <option value="3-6m">3-6 Marla</option>
-                        <option value="7-10m">7-10 Marla</option>
-                        <option value="11-15m">11-15 Marla</option>
-                        <option value="16-20m">16-20 Marla</option>
-                        <option value="2-6k">2-6 Kanal</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block font-semibold text-gray-600 mb-1">Unique Design ID</label>
-                    <input type="text" id="formDesignId" class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:border-amber-600 bg-gray-50" readonly>
-                </div>
-                <div>
-                    <label class="block font-semibold text-gray-600 mb-1">Design/Elevation Title</label>
-                    <input type="text" id="formTitle" class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:border-amber-600">
-                </div>
-                <div>
-                    <label class="block font-semibold text-gray-600 mb-1">Client Name</label>
-                    <input type="text" id="formClient" class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:border-amber-600">
-                </div>
-                <div>
-                    <label class="block font-semibold text-gray-600 mb-1">Project Location</label>
-                    <input type="text" id="formLocation" class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:border-amber-600">
-                </div>
-                <div>
-                    <label class="block font-semibold text-gray-600 mb-1">Photo Upload</label>
-                    <input type="file" id="formFile" accept="image/*" onchange="previewImageFile()" class="w-full text-gray-500">
-                    <input type="hidden" id="formImageBase64">
-                    <img id="formImgPreview" src="" class="w-full h-32 object-cover rounded mt-1 bg-gray-100 border border-gray-200">
-                </div>
-                <div class="flex gap-2 pt-2">
-                    <button onclick="saveDesignChange()" class="flex-1 bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 rounded transition text-sm cursor-pointer">Save Changes</button>
-                    <button id="deleteBtn" onclick="deleteDesignEntry()" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-3 rounded transition text-sm cursor-pointer hidden"><i class="fa-solid fa-trash"></i></button>
-                </div>
+            <!-- Center Branding Text Overlay -->
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none p-4">
+                <span class="text-white/40 text-center text-xs sm:text-sm md:text-xl lg:text-3xl font-bold tracking-wider uppercase bg-black/30 backdrop-blur-[1px] px-4 py-2 rounded-lg border border-white/10 select-none shadow-lg">
+                    Hadi Architect & Builder<br class="sm:hidden"> 0324 530 1575
+                </span>
             </div>
         </div>
     </div>
 
+    <!-- Lightbox Script Engine -->
     <script>
-        const ADMIN_SECRET = "R@n@1234";
-        let isAdminLoggedIn = false;
-        let globalDatabase = [];
-
-        // DATABASE LIFECYCLE (Starts completely empty)
-        function initDatabase() {
-            const cachedData = localStorage.getItem("hab_elevations_db");
-            if (cachedData) {
-                globalDatabase = JSON.parse(cachedData);
-            } else {
-                globalDatabase = []; // Completely clean slatted empty start
-                saveToLocalStorage();
-            }
-            renderAllGrids();
-        }
-
-        function saveToLocalStorage() {
-            localStorage.setItem("hab_elevations_db", JSON.stringify(globalDatabase));
-        }
-
-        function renderAllGrids() {
-            const categories = ['3-6m', '7-10m', '11-15m', '16-20m', '2-6k'];
-            categories.forEach(cat => {
-                const filtered = globalDatabase.filter(item => item.category === cat);
-                document.getElementById(`count-${cat}`).innerText = `${filtered.length} Concepts`;
-                
-                const grid = document.getElementById(`grid-${cat}`);
-                let htmlBuffer = "";
-
-                filtered.forEach(item => {
-                    const dbIndex = globalDatabase.findIndex(d => d.id === item.id);
-                    
-                    htmlBuffer += `
-                        <div class="design-card bg-white border border-gray-200/60 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition duration-300 relative group">
-                            <div onclick="openLightbox(${dbIndex})" class="h-48 bg-gray-200 relative overflow-hidden cursor-zoom-in">
-                                <img src="${item.image}" alt="${item.id}" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400/e2e8f0/1e293b?text=${item.id}'">
-                                <span class="absolute top-2 left-2 bg-amber-600 text-white font-mono font-bold text-[10px] px-2 py-0.5 rounded shadow">
-                                    ${item.id}
-                                </span>
-                                <div onclick="event.stopPropagation();" class="${isAdminLoggedIn ? 'flex' : 'hidden'} absolute inset-0 bg-black/40 items-center justify-center backdrop-blur-xs">
-                                    <button onclick="openEditModal(${dbIndex})" class="bg-amber-600 text-white text-xs font-bold py-1.5 px-4 rounded shadow-lg hover:bg-amber-700 transition cursor-pointer"><i class="fa-solid fa-pen-to-square mr-1"></i> Edit Design</button>
-                                </div>
-                            </div>
-                            <div class="p-4 space-y-2">
-                                <h3 class="text-sm font-bold text-gray-900 truncate" title="${item.title}">${item.title}</h3>
-                                <div class="text-[11px] text-gray-600 space-y-1">
-                                    <p class="truncate"><i class="fa-solid fa-user text-amber-600 w-4"></i><span class="text-gray-400">Client:</span> <strong class="text-gray-800 font-semibold">${item.client}</strong></p>
-                                    <p class="truncate"><i class="fa-solid fa-location-dot text-amber-600 w-4"></i><span class="text-gray-400">Loc:</span> <span class="text-gray-700 font-medium">${item.location}</span></p>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                });
-                grid.innerHTML = htmlBuffer || `<div class="col-span-full text-center text-xs text-gray-400 py-10"><i class="fa-solid fa-folder-open text-gray-300 text-2xl block mb-2"></i>No designs uploaded yet. Login as admin to add.</div>`;
-            });
-        }
-
-        // LIGHTBOX
-        function openLightbox(index) {
-            const item = globalDatabase[index];
-            document.getElementById("lightboxImg").src = item.image;
-            document.getElementById("lightboxIdTag").innerText = item.id;
-            document.getElementById("lightboxTitle").innerText = item.title;
-            document.getElementById("lightboxDetails").innerText = `Client: ${item.client} | Location: ${item.location}`;
-            document.getElementById("lightboxModal").classList.remove("hidden");
-            document.body.style.overflow = "hidden";
+        function openLightbox(imageSrc) {
+            const modal = document.getElementById('lightboxModal');
+            const modalImg = document.getElementById('lightboxImg');
+            
+            modalImg.src = imageSrc;
+            modal.classList.remove('hidden');
+            // Background scroll disable karne ke liye
+            document.body.style.overflow = 'hidden';
         }
 
         function closeLightbox() {
-            document.getElementById("lightboxModal").classList.add("hidden");
-            document.body.style.overflow = "auto";
+            const modal = document.getElementById('lightboxModal');
+            modal.classList.add('hidden');
+            // Background scroll wapas active karne ke liye
+            document.body.style.overflow = 'auto';
         }
 
-        window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
-
-        // ADMIN CONTROLS
-        function toggleAdminModal() {
-            if (isAdminLoggedIn) { adminLogout(); return; }
-            document.getElementById("loginModal").classList.remove("hidden");
-            document.getElementById("adminPassword").value = "";
-        }
-
-        function processLogin() {
-            if (document.getElementById("adminPassword").value === ADMIN_SECRET) {
-                isAdminLoggedIn = true;
-                document.getElementById("loginModal").classList.add("hidden");
-                document.getElementById("adminControlBar").classList.remove("hidden");
-                document.getElementById("adminNavBtn").innerHTML = `<i class="fa-solid fa-unlock-keyhole text-green-600 mr-1"></i> Exit Admin`;
-                renderAllGrids();
-            } else {
-                document.getElementById("loginError").classList.remove("hidden");
+        // ESC key se modal close karne ka framework
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
             }
-        }
-
-        function adminLogout() {
-            isAdminLoggedIn = false;
-            document.getElementById("adminControlBar").classList.add("hidden");
-            document.getElementById("adminNavBtn").innerHTML = `<i class="fa-solid fa-lock mr-1"></i> Admin Login`;
-            renderAllGrids();
-        }
-
-        function openEditModal(index) {
-            const item = globalDatabase[index];
-            document.getElementById("modalFormTitle").innerText = "Modify Design Entry";
-            document.getElementById("formActionType").value = "edit";
-            document.getElementById("targetGlobalIndex").value = index;
-            document.getElementById("formCategory").value = item.category;
-            document.getElementById("formCategory").disabled = true;
-            document.getElementById("formDesignId").value = item.id;
-            document.getElementById("formTitle").value = item.title;
-            document.getElementById("formClient").value = item.client;
-            document.getElementById("formLocation").value = item.location;
-            document.getElementById("formImageBase64").value = item.image;
-            document.getElementById("formImgPreview").src = item.image;
-            document.getElementById("deleteBtn").classList.remove("hidden");
-            document.getElementById("editModal").classList.remove("hidden");
-        }
-
-        function openUploadModal() {
-            document.getElementById("modalFormTitle").innerText = "Upload New Elevation Concept";
-            document.getElementById("formActionType").value = "upload";
-            document.getElementById("formCategory").value = "3-6m";
-            document.getElementById("formCategory").disabled = false;
-            
-            const nextSeed = globalDatabase.length + 1;
-            document.getElementById("formDesignId").value = `HAB-NEW-${nextSeed}`;
-            document.getElementById("formTitle").value = "";
-            document.getElementById("formClient").value = "";
-            document.getElementById("formLocation").value = "";
-            document.getElementById("formImageBase64").value = "";
-            document.getElementById("formImgPreview").src = "https://placehold.co/600x400/e2e8f0/1e293b?text=Upload+Photo";
-            document.getElementById("deleteBtn").classList.add("hidden");
-            document.getElementById("editModal").classList.remove("hidden");
-        }
-
-        function closeEditModal() { document.getElementById("editModal").classList.add("hidden"); }
-
-        function previewImageFile() {
-            const file = document.getElementById("formFile").files[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onloadend = function() {
-                document.getElementById("formImageBase64").value = reader.result;
-                document.getElementById("formImgPreview").src = reader.result;
-            }
-            reader.readAsDataURL(file);
-        }
-
-        function saveDesignChange() {
-            const action = document.getElementById("formActionType").value;
-            const title = document.getElementById("formTitle").value.trim() || "Untitled Elevation Concept";
-            const client = document.getElementById("formClient").value.trim() || "Unknown Client";
-            const location = document.getElementById("formLocation").value.trim() || "Pakistan";
-            const image = document.getElementById("formImageBase64").value || "https://placehold.co/600x400/e2e8f0/1e293b?text=Hadi+Architect";
-
-            if (action === "edit") {
-                const idx = document.getElementById("targetGlobalIndex").value;
-                globalDatabase[idx].title = title;
-                globalDatabase[idx].client = client;
-                globalDatabase[idx].location = location;
-                globalDatabase[idx].image = image;
-            } else {
-                const cat = document.getElementById("formCategory").value;
-                const catPrefixMap = { '3-6m':'36M', '7-10m':'710M', '11-15m':'1115M', '16-20m':'1620M', '2-6k':'26K' };
-                const matchCount = globalDatabase.filter(d => d.category === cat).length + 1;
-                const finalGeneratedId = `HAB-${catPrefixMap[cat]}-${String(matchCount).padStart(3, '0')}`;
-
-                globalDatabase.push({
-                    id: finalGeneratedId, category: cat, title: title, client: client, location: location, image: image
-                });
-            }
-            saveToLocalStorage();
-            renderAllGrids();
-            closeEditModal();
-        }
-
-        function deleteDesignEntry() {
-            if (!confirm("Delete this design concept?")) return;
-            const idx = document.getElementById("targetGlobalIndex").value;
-            globalDatabase.splice(idx, 1);
-            saveToLocalStorage();
-            renderAllGrids();
-            closeEditModal();
-        }
-
-        window.addEventListener('DOMContentLoaded', initDatabase);
+        });
     </script>
+
 </body>
 </html>
